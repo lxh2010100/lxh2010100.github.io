@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>小站练兵</title>
+  
+  <subtitle>积土成山 积水成渊</subtitle>
+  <link href="https://lxh2010100.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://lxh2010100.github.io/"/>
+  <updated>2023-03-14T16:38:06.359Z</updated>
+  <id>https://lxh2010100.github.io/</id>
+  
+  <author>
+    <name>一只不停游泳的鱼儿</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shell脚本学习01--入门</title>
+    <link href="https://lxh2010100.github.io/blog/be73ac2a.html"/>
+    <id>https://lxh2010100.github.io/blog/be73ac2a.html</id>
+    <published>2023-03-14T16:38:06.359Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="shell" scheme="https://lxh2010100.github.io/categories/shell/"/>
+    
+    
+    <category term="shell脚本基础使用" scheme="https://lxh2010100.github.io/tags/shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell脚本学习02--运算符</title>
+    <link href="https://lxh2010100.github.io/blog/c67b5973.html"/>
+    <id>https://lxh2010100.github.io/blog/c67b5973.html</id>
+    <published>2023-03-14T16:38:06.359Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Shell运算符&quot;&gt;&lt;a href=&quot;#Shell运算符&quot; class=&quot;headerlink&quot; title=&quot;Shell运算符&quot;&gt;&lt;/a&gt;Shell运算符&lt;/h2&gt;&lt;p&gt;Bash</summary>
+        
+      
+    
+    
+    
+    <category term="shell" scheme="https://lxh2010100.github.io/categories/shell/"/>
+    
+    
+    <category term="shell脚本基础使用" scheme="https://lxh2010100.github.io/tags/shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell脚本学习03--字符串和数组</title>
+    <link href="https://lxh2010100.github.io/blog/b5726c19.html"/>
+    <id>https://lxh2010100.github.io/blog/b5726c19.html</id>
+    <published>2023-03-14T16:38:06.359Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="shell" scheme="https://lxh2010100.github.io/categories/shell/"/>
+    
+    
+    <category term="shell脚本基础使用" scheme="https://lxh2010100.github.io/tags/shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell脚本学习04--条件控制</title>
+    <link href="https://lxh2010100.github.io/blog/45de763f.html"/>
+    <id>https://lxh2010100.github.io/blog/45de763f.html</id>
+    <published>2023-03-14T16:38:06.359Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;条件判断：if语句&quot;&gt;&lt;a href=&quot;#条件判断：if语句&quot; class=&quot;headerlink&quot; title=&quot;条件判断：if语句&quot;&gt;&lt;/a&gt;条件判断：if语句&lt;/h2&gt;&lt;p&gt;语法格式：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="shell" scheme="https://lxh2010100.github.io/categories/shell/"/>
+    
+    
+    <category term="shell脚本基础使用" scheme="https://lxh2010100.github.io/tags/shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell脚本学习05--函数</title>
+    <link href="https://lxh2010100.github.io/blog/26f46cdf.html"/>
+    <id>https://lxh2010100.github.io/blog/26f46cdf.html</id>
+    <published>2023-03-14T16:38:06.359Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;函数可以让我们将一个复杂功能划分成若干模块，让程序结构更加清晰，代码重复利用率更高。像其他编程语言一样，Shell 也支持函数。Shell 函数必须先定义后使用。&lt;/p&gt;
+&lt;h2 id=&quot;函数定义&quot;&gt;&lt;a href=&quot;#函数定义&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="shell" scheme="https://lxh2010100.github.io/categories/shell/"/>
+    
+    
+    <category term="shell脚本基础使用" scheme="https://lxh2010100.github.io/tags/shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell脚本学习06--其它</title>
+    <link href="https://lxh2010100.github.io/blog/339cb40c.html"/>
+    <id>https://lxh2010100.github.io/blog/339cb40c.html</id>
+    <published>2023-03-14T16:38:06.359Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Shell输入输出重定向&quot;&gt;&lt;a href=&quot;#Shell输入输出重定向&quot; class=&quot;headerlink&quot; title=&quot;Shell输入输出重定向&quot;&gt;&lt;/a&gt;Shell输入输出重定向&lt;/h2&gt;&lt;p&gt;Unix</summary>
+        
+      
+    
+    
+    
+    <category term="shell" scheme="https://lxh2010100.github.io/categories/shell/"/>
+    
+    
+    <category term="shell脚本基础使用" scheme="https://lxh2010100.github.io/tags/shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu22.04安装jenkins</title>
+    <link href="https://lxh2010100.github.io/blog/b9484dca.html"/>
+    <id>https://lxh2010100.github.io/blog/b9484dca.html</id>
+    <published>2023-03-11T15:44:55.000Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Jenkins 是一个支持&lt;strong&gt;持续集成&lt;/strong&gt; （CI） 和&lt;strong&gt;持续交付&lt;/strong&gt; （CD） 的 CI/CD 软件平台。它用于&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Ubuntu" scheme="https://lxh2010100.github.io/categories/Ubuntu/"/>
+    
+    
+    <category term="Ubuntu" scheme="https://lxh2010100.github.io/tags/Ubuntu/"/>
+    
+    <category term="jenkins" scheme="https://lxh2010100.github.io/tags/jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu开发环境搭建</title>
+    <link href="https://lxh2010100.github.io/blog/a6657676.html"/>
+    <id>https://lxh2010100.github.io/blog/a6657676.html</id>
+    <published>2023-03-08T22:43:56.000Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-更换国内源&quot;&gt;&lt;a href=&quot;#1-更换国内源&quot; class=&quot;headerlink&quot; title=&quot;1 更换国内源&quot;&gt;&lt;/a&gt;1</summary>
+        
+      
+    
+    
+    
+    <category term="Ubuntu" scheme="https://lxh2010100.github.io/categories/Ubuntu/"/>
+    
+    
+    <category term="Ubuntu" scheme="https://lxh2010100.github.io/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>macOS开发环境搭建</title>
+    <link href="https://lxh2010100.github.io/blog/cb5ce835.html"/>
+    <id>https://lxh2010100.github.io/blog/cb5ce835.html</id>
+    <published>2023-03-08T22:41:46.000Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-Command-Line-Tools&quot;&gt;&lt;a href=&quot;#1-Command-Line-Tools&quot; class=&quot;headerlink&quot; title=&quot;1 Command Line Tools&quot;&gt;&lt;/a&gt;1 Command Line</summary>
+        
+      
+    
+    
+    
+    <category term="macOS" scheme="https://lxh2010100.github.io/categories/macOS/"/>
+    
+    
+    <category term="macOS" scheme="https://lxh2010100.github.io/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown语法和Typora编辑器使用</title>
+    <link href="https://lxh2010100.github.io/blog/420f09d5.html"/>
+    <id>https://lxh2010100.github.io/blog/420f09d5.html</id>
+    <published>2023-02-22T01:14:58.000Z</published>
+    <updated>2023-03-14T16:38:06.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-Markdown历史&quot;&gt;&lt;a href=&quot;#1-Markdown历史&quot; class=&quot;headerlink&quot; title=&quot;1. Markdown历史&quot;&gt;&lt;/a&gt;1. Markdown历史&lt;/h1&gt;&lt;p&gt;在日常工作和互联网写作中,</summary>
+        
+      
+    
+    
+    
+    <category term="Markdown" scheme="https://lxh2010100.github.io/categories/Markdown/"/>
+    
+    
+    <category term="Typora" scheme="https://lxh2010100.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://lxh2010100.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+</feed>
