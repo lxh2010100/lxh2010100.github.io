@@ -1,0 +1,2158 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux内核自测, 永远在路上">
+    <meta name="description" content="kernel在tools/testing/selftests/目录下包含一组“selftests” 。这些旨在进行小型测试，以测试内核中的各个代码路径。测试旨在在构建、安装和引导内核之后运行。
+来自master的 Kselftest 可以在">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Linux内核自测 | 华仔の小站</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="华仔の小站" type="application/atom+xml">
+</head>
+
+
+    <body>
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.jpeg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">华仔の小站</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/books" class="waves-effect waves-light">
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>书籍</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle-o" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-chain" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.jpeg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">华仔の小站</div>
+        <div class="logo-desc">
+            
+            从来没有真正的绝境，只有心灵的迷途
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/books" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-book"></i>
+			
+			书籍
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-chain"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+            
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/168.jpeg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Linux内核自测</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/Qemu/">
+                                <span class="chip bg-color">Qemu</span>
+                            </a>
+                        
+                            <a href="/tags/kernel/">
+                                <span class="chip bg-color">kernel</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-04-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-02-03
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    18 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism-atom-dark.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>kernel在<code>tools/testing/selftests/</code>目录下包含一组“selftests” 。这些旨在进行小型测试，以测试内核中的各个代码路径。测试旨在在构建、安装和引导内核之后运行。</p>
+<p>来自master的 Kselftest 可以在较旧的稳定内核上运行。从主线运行测试提供了最好的覆盖率。几个测试环在稳定版本上运行主线 kselftest 套件。原因是当添加新测试来测试现有代码以对错误进行回归测试时，我们应该能够在旧内核上运行该测试。因此，重要的是保留仍然可以测试旧内核的代码，并确保它在新版本上优雅地跳过测试。</p>
+<p>您可以在 Kselftest wiki 上找到有关 Kselftest 框架的其他信息，以及如何使用该框架编写新测试：</p>
+<p><a target="_blank" rel="noopener" href="https://kselftest.wiki.kernel.org/">https://kselftest.wiki.kernel.org/</a></p>
+<p>在某些系统上，热插拔测试可能会永远挂起，等待 CPU 和内存准备好脱机。创建一个特殊的热插拔目标来运行全方位的热插拔测试。在默认模式下，热插拔测试在有限范围内以安全模式运行。在受限模式下，热插拔 测试在单个 cpu 上运行，而不是在所有支持热插拔的 cpu 上运行，内存热插拔测试在 2% 的支持热插拔的内存上运行，而不是 10%。</p>
+<p>kselftest 作为用户空间进程运行。可以在用户空间中编写/运行的测试可能希望使用<a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/dev-tools/kselftest.html#test-harness">测试工具</a>。需要在内核空间中运行的测试可能希望使用<a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/dev-tools/kselftest.html#test-module">测试模块</a>。</p>
+<h2 id="1-检查构建系统上的selftest构建依赖项"><a href="#1-检查构建系统上的selftest构建依赖项" class="headerlink" title="1 检查构建系统上的selftest构建依赖项"></a>1 检查构建系统上的selftest构建依赖项</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tools/testing/selftests
+tkselftest_deps.sh <span class="token parameter variable">-p</span> gcc <span class="token comment">#检查gcc编译依赖项</span>
+tkselftest_deps.sh <span class="token parameter variable">-p</span> aarch64-linux-gnu-gcc <span class="token comment">#检查aarch64-linux-gnu-gcc编译依赖项</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>更多选项查看</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">➜  selftests git:<span class="token punctuation">(</span>master<span class="token punctuation">)</span> ✗ ./kselftest_deps.sh       
+Usage: ./kselftest_deps.sh -<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">&lt;</span>compiler<span class="token operator">&gt;</span> <span class="token punctuation">[</span>test_name<span class="token punctuation">]</span>
+
+        kselftest_deps.sh <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> gcc
+        kselftest_deps.sh <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> gcc vm
+        kselftest_deps.sh <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> aarch64-linux-gnu-gcc
+        kselftest_deps.sh <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> aarch64-linux-gnu-gcc vm
+
+- Should be run <span class="token keyword">in</span> selftests directory <span class="token keyword">in</span> the kernel repo.
+- Checks <span class="token keyword">if</span> Kselftests can be built/cross-built on a system.
+- Parses all test/sub-test Makefile to <span class="token function">find</span> library dependencies.
+- Runs compile <span class="token builtin class-name">test</span> on a trivial C <span class="token function">file</span> with LDLIBS specified
+  <span class="token keyword">in</span> the <span class="token builtin class-name">test</span> Makefiles to identify missing library dependencies.
+- Prints suggested target list <span class="token keyword">for</span> a system filtering out tests
+  failed the build dependency check from the TARGETS <span class="token keyword">in</span> Selftests
+  main Makefile when optional <span class="token parameter variable">-p</span> is specified.
+- Prints pass/fail dependency check <span class="token keyword">for</span> each tests/sub-test.
+- Prints pass/fail targets and libraries.
+- Default: runs dependency checks on all tests.
+- Optional: <span class="token builtin class-name">test</span> name can be specified to check dependencies <span class="token keyword">for</span> it.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-运行selftests（热插拔测试在受限模式下运行）"><a href="#2-运行selftests（热插拔测试在受限模式下运行）" class="headerlink" title="2 运行selftests（热插拔测试在受限模式下运行）"></a>2 运行selftests（热插拔测试在受限模式下运行）</h2><ul>
+<li>要构建测试，请执行以下操作：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tools/testing/selftests
+<span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>要运行测试，请执行以下操作：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests run_tests<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tools/testing/selftests
+<span class="token function">make</span> run_tests<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>若要使用单个命令构建和运行测试，请使用：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> menuconfig <span class="token comment"># 根据需要配置</span>
+<span class="token function">make</span> kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>请注意，在kernel根目录运行，某些测试需要根权限。</p>
+</blockquote>
+<p>Kselftest 支持将输出文件保存在单独的目录中，然后运行测试。要在单独的目录中定位输出文件，支持两种语法。在这两种情况下，工作目录都必须是内核 src 的根目录。这适用于下面的“运行自测子集”部分。</p>
+<p>要构建，请使用 O= 将输出文件保存在单独的目录中</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>/tmp/kselftest kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>请注意，在kernel根目录运行，编译完成后，目标会生成在/tmp/kselftest目录下，并运行</p>
+</blockquote>
+<p>要构建，请使用 KBUILD_OUTPUT 将输出文件保存在单独的目录中</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">KBUILD_OUTPUT</span><span class="token operator">=</span>/tmp/kselftest<span class="token punctuation">;</span> <span class="token function">make</span> kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>请注意，在kernel根目录运行，与上面的命令行等价</p>
+</blockquote>
+<p>O= 赋值优先于 KBUILD_OUTPUT 环境变量。</p>
+<p>上面的命令默认运行测试并打印完整的通过/失败报告。Kselftest 支持“summary”选项，使测试结果更容易理解。当指定摘要选项时，请在 /tmp/testname 文件中找到每个测试的详细测试结果。这适用于下面的“Running a subset of selftests”部分。</p>
+<p>在启用摘要选项的情况下运行 kselftest</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token assign-left variable">summary</span><span class="token operator">=</span><span class="token number">1</span> kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上述命令运行测试并打印通过/失败摘要以使 更容易理解测试结果。请找到详细的个人 /tmp/testname 文件中每个测试的测试结果。</p>
+<h2 id="3-运行一部分selftest"><a href="#3-运行一部分selftest" class="headerlink" title="3 运行一部分selftest"></a>3 运行一部分selftest</h2><p>您可以使用 make 命令行上的 “TARGETS” 变量来指定 要运行的单个测试或要运行的测试列表。</p>
+<p>要仅运行针对单个子系统的测试，请执行以下操作：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span>ptrace run_tests<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tools/testing/selftests
+<span class="token function">make</span> <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span>ptrace <span class="token comment"># 只编译</span>
+<span class="token function">make</span> <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span>ptrace run_tests <span class="token comment"># 编译+运行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>可以指定要生成和运行的多个测试：</p>
+<p>直接调用根目录下的makefile</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span><span class="token string">"size timers"</span> kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tools/testing/selftests
+<span class="token function">make</span> <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span><span class="token string">'ptrace size'</span> <span class="token comment"># 只编译</span>
+<span class="token function">make</span> <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span><span class="token string">'ptrace size'</span> run_tests <span class="token comment"># 编译+运行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>从用户特定的对象目录构建和运行（使 O=dir）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>/tmp/kselftest <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span><span class="token string">"size timers"</span> kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>构建并运行KBUILD_OUTPUT目录（make KBUILD_OUTPUT=）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token assign-left variable">KBUILD_OUTPUT</span><span class="token operator">=</span>/tmp/kselftest <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span><span class="token string">"size timers"</span> kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此外，您可以在 make 命令行上使用“SKIP_TARGETS”变量来指定一个或多个要从 TARGETS 列表中排除的目标。</p>
+<p>要运行除单个子系统之外的所有测试：</p>
+<pre class="line-numbers language-none"><code class="language-none">make -C tools/testing/selftests SKIP_TARGETS=ptrace run_tests<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>您可以指定要跳过的多个测试：</p>
+<pre class="line-numbers language-none"><code class="language-none">make SKIP_TARGETS="size timers" kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>您还可以指定要与专用跳过列表一起运行的受限测试列表：</p>
+<pre class="line-numbers language-none"><code class="language-none">make TARGETS="bpf breakpoints size timers" SKIP_TARGETS=bpf kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>请参阅<code>tools/testing/selftests/Makefile</code>以获取所有列表可能的targets。</p>
+<h2 id="4-运行全范围热插拔selftests"><a href="#4-运行全范围热插拔selftests" class="headerlink" title="4 运行全范围热插拔selftests"></a>4 运行全范围热插拔selftests</h2><p>要构建热插拔测试，请执行以下操作：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests hotplug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>要运行热插拔测试，请执行以下操作：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests run_hotplug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>请注意，某些测试需要根权限。</p>
+<h2 id="5-安装selftests"><a href="#5-安装selftests" class="headerlink" title="5 安装selftests"></a>5 安装selftests</h2><p>默认情况下，您可以使用<code>kselftest_install.sh</code>工具安装默认位置是<code>tools/testing/selftests/kselftest_install </code>或用户指定的位置。</p>
+<p>要在默认位置安装selftests：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tools/testing/selftests
+./kselftest_install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>要在用户指定的位置安装selftests：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tools/testing/selftests
+./kselftest_install.sh install_dir<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="6-运行已安装的selftests"><a href="#6-运行已安装的selftests" class="headerlink" title="6 运行已安装的selftests"></a>6 运行已安装的selftests</h2><p>Kselftest install以及Kselftest压缩包提供了一个脚本名为“run_kselftest.sh”以运行测试。</p>
+<p>您只需执行以下操作即可运行已安装的 Kselftests。请注意某些测试需要根权限：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> install_dir
+./run_kselftest.sh <span class="token comment"># 运行所有已编译的测试集</span>
+./run_kselftest.sh <span class="token parameter variable">-c</span> timers <span class="token comment"># 运行所有已编译的测试集</span>
+./run_kselftest.sh <span class="token parameter variable">-t</span> timers:nanosleep <span class="token comment"># 运行所有已编译的测试集</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>要查看可用测试列表，可以使用-l选项：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./run_kselftest.sh <span class="token parameter variable">-l</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>-c选项可用于运行测试集合中的所有测试，或用于特定单个测试的-t选项。两者都可以多次使用：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./run_kselftest.sh <span class="token parameter variable">-c</span> bpf <span class="token parameter variable">-c</span> seccomp <span class="token parameter variable">-t</span> timers:posix_timers <span class="token parameter variable">-t</span> timer:nanosleep<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>更多选项参考</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">➜  selftests git:<span class="token punctuation">(</span>master<span class="token punctuation">)</span> ✗ ./run_kselftest.sh <span class="token parameter variable">-h</span>                      
+Usage: ./run_kselftest.sh <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+  <span class="token parameter variable">-s</span> <span class="token operator">|</span> <span class="token parameter variable">--summary</span>                Print summary with detailed log <span class="token keyword">in</span> output.log
+  <span class="token parameter variable">-t</span> <span class="token operator">|</span> <span class="token parameter variable">--test</span> COLLECTION:TEST   Run TEST from COLLECTION
+  <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token parameter variable">--collection</span> COLLECTION  Run all tests from COLLECTION
+  <span class="token parameter variable">-l</span> <span class="token operator">|</span> <span class="token parameter variable">--list</span>                   List the available collection:test entries
+  <span class="token parameter variable">-d</span> <span class="token operator">|</span> --dry-run                Don't actually run any tests
+  <span class="token parameter variable">-h</span> <span class="token operator">|</span> <span class="token parameter variable">--help</span>                   Show this usage info<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7-打包selftests"><a href="#7-打包selftests" class="headerlink" title="7 打包selftests"></a>7 打包selftests</h2><p>在某些情况下需要打包，例如当测试需要在不同的系统上运行时。要打包自检，请运行：</p>
+<pre class="line-numbers language-none"><code class="language-none">make -C tools/testing/selftests gen_tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这会在INSTALL_PATH/kselftest-packages目录中生成一个 tarball 。默认情况下，使用.gz格式。可以通过指定FORMAT make 变量来覆盖 tar 压缩格式。<a target="_blank" rel="noopener" href="https://www.gnu.org/software/tar/manual/html_node/gzip.html#auto_002dcompress">支持tar 的自动压缩</a>选项识别的任何值 ，例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">make -C tools/testing/selftests gen_tar FORMAT=.xz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>make gen_tar调用make install以便您可以使用它来打包测试子集，方法是使用在<a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/dev-tools/kselftest.html#running-a-subset-of-selftests">运行自测试子集部分</a>中指定的变量 ：</p>
+<pre class="line-numbers language-none"><code class="language-none">make -C tools/testing/selftests gen_tar TARGETS="bpf" FORMAT=.xz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="8-贡献新的测试"><a href="#8-贡献新的测试" class="headerlink" title="8 贡献新的测试"></a>8 贡献新的测试</h2><p>一般来说，自测的规则是</p>
+<ul>
+<li>如果您不是管理员，请尽可能多地做；</li>
+<li>不要花太长时间；</li>
+<li>不要破坏任何架构上的构建，并且</li>
+<li>如果您的功能未配置，请不要导致顶级“make run_tests”失败。</li>
+</ul>
+<h2 id="9-贡献新测试（详情）"><a href="#9-贡献新测试（详情）" class="headerlink" title="9 贡献新测试（详情）"></a>9 贡献新测试（详情）</h2><ul>
+<li>在您的 Makefile 中，通过包含它而不是重新发明轮子来使用 lib.mk 中的设施。在包含 lib.mk 之前，根据需要指定标志和二进制文件生成标志。</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">CFLAGS <span class="token operator">=</span> <span class="token variable"><span class="token variable">$(</span>KHDR_INCLUDES<span class="token variable">)</span></span>
+TEST_GEN_PROGS :<span class="token operator">=</span> close_range_test
+include <span class="token punctuation">..</span>/lib.mk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>如果在编译期间生成此类二进制文件或文件，请使用 TEST_GEN_XXX。</p>
+<p>  TEST_PROGS、TEST_GEN_PROGS 表示它是默认测试的可执行文件。</p>
+<p>  TEST_CUSTOM_PROGS 应该由需要自定义构建规则并防止使用常见构建规则的测试使用。</p>
+<p>  TEST_PROGS 用于测试 shell 脚本。请确保 shell 脚本已设置其 exec 位。否则，lib.mk run_tests 将生成警告。</p>
+<p>  TEST_CUSTOM_PROGS 和 TEST_PROGS 将由公共 run_tests 运行。</p>
+<p>  TEST_PROGS_EXTENDED、TEST_GEN_PROGS_EXTENDED 表示它是默认未测试的可执行文件。TEST_FILES、TEST_GEN_FILES 表示它是测试使用的文件。</p>
+</li>
+<li><p>首先使用内核源代码和/或 git repo 中的标头，然后使用系统标头。与发行版在系统上安装的标头相反，内核版本的标头应该是能够找到回归的主要焦点。在 Makefile 中使用 KHDR_INCLUDES 来包含来自内核源代码的标头。</p>
+</li>
+<li><p>如果测试需要启用特定的内核配置选项，请在测试目录中添加配置文件以启用它们。</p>
+<p>  例如：工具/测试/selftests/android/config</p>
+</li>
+<li><p>在测试目录中创建一个 .gitignore 文件并在其中添加所有生成的对象。</p>
+</li>
+<li><p>在 selftests/Makefile 的 TARGETS 中添加新的测试名称：</p>
+  <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">TARGETS <span class="token operator">+=</span> android<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>所有更改都应该通过：</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kselftest-<span class="token punctuation">{</span>all,install,clean,gen_tar<span class="token punctuation">}</span>
+kselftest-<span class="token punctuation">{</span>all,install,clean,gen_tar<span class="token punctuation">}</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>abo_path
+kselftest-<span class="token punctuation">{</span>all,install,clean,gen_tar<span class="token punctuation">}</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>rel_path
+<span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests <span class="token punctuation">{</span>all,install,clean,gen_tar<span class="token punctuation">}</span>
+<span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests <span class="token punctuation">{</span>all,install,clean,gen_tar<span class="token punctuation">}</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>abs_path
+<span class="token function">make</span> <span class="token parameter variable">-C</span> tools/testing/selftests <span class="token punctuation">{</span>all,install,clean,gen_tar<span class="token punctuation">}</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>rel_path<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="10-测试模块"><a href="#10-测试模块" class="headerlink" title="10 测试模块"></a>10 测试模块</h2><p>Kselftest 从用户空间测试内核。有时需要从内核内部进行测试，一种方法是创建一个测试模块。我们可以使用 shell 脚本测试运行器将模块绑定到 kselftest 框架中。 <code>kselftest/module.sh</code>旨在促进这一过程。还提供了一个头文件来帮助编写与 kselftest 一起使用的内核模块：</p>
+<ul>
+<li><code>tools/testing/selftests/kselftest_module.h</code></li>
+<li><code>tools/testing/selftests/kselftest/module.sh</code></li>
+</ul>
+<p>请注意，测试模块应该使用 TAINT_TEST 污染内核。对于目录中的模块<code>tools/testing/</code> 或使用<code>kselftest_module.h</code>上述标头的模块，这将自动发生。否则，您将需要添加到您的模块源。不加载模块的自测试通常不应污染内核，但在加载非测试模块的情况下，可以通过写入.<code>MODULE_INFO(test, "Y")``/proc/sys/kernel/tainted</code></p>
+<h3 id="10-1-如何使用"><a href="#10-1-如何使用" class="headerlink" title="10.1 如何使用"></a>10.1 如何使用</h3><p>这里我们展示了创建测试模块并将其绑定到 kselftest 的典型步骤。我们以 lib/ 的 kselftests 为例。</p>
+<ol>
+<li>创建测试模块</li>
+<li>创建将运行（加载/卸载）模块的测试脚本，例如<code>tools/testing/selftests/lib/printf.sh</code></li>
+<li>将行添加到配置文件，例如<code>tools/testing/selftests/lib/config</code></li>
+<li>将测试脚本添加到 makefile 例如<code>tools/testing/selftests/lib/Makefile</code></li>
+<li>验证它是否有效：</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Assumes you have booted a fresh build of this kernel tree</span>
+<span class="token builtin class-name">cd</span> /path/to/linux/tree
+<span class="token function">make</span> kselftest-merge
+<span class="token function">make</span> modules
+<span class="token function">sudo</span> <span class="token function">make</span> modules_install
+<span class="token function">make</span> <span class="token assign-left variable">TARGETS</span><span class="token operator">=</span>lib kselftest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-2-示例模块"><a href="#10-2-示例模块" class="headerlink" title="10.2 示例模块"></a>10.2 示例模块</h3><p>一个简单的测试模块可能看起来像这样：</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">// SPDX-License-Identifier: GPL-2.0+
+
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+#include "../tools/testing/selftests/kselftest_module.h"
+
+KSTM_MODULE_GLOBALS();
+
+/*
+ * Kernel module for testing the foobinator
+ */
+
+static int __init test_function()
+{
+        ...
+}
+
+static void __init selftest(void)
+{
+        KSTM_CHECK_ZERO(do_test_case("", 0));
+}
+
+KSTM_MODULE_LOADERS(test_foo);
+MODULE_AUTHOR("John Developer &lt;jd@fooman.org&gt;");
+MODULE_LICENSE("GPL");
+MODULE_INFO(test, "Y");<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-3-示例测试脚本"><a href="#10-3-示例测试脚本" class="headerlink" title="10.3 示例测试脚本"></a>10.3 示例测试脚本</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># SPDX-License-Identifier: GPL-2.0+</span>
+<span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> $0<span class="token variable">)</span></span>/<span class="token punctuation">..</span>/kselftest/module.sh <span class="token string">"foo"</span> test_foo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-4-测试约束"><a href="#10-4-测试约束" class="headerlink" title="10.4 测试约束"></a>10.4 测试约束</h3><p>kselftest_harness.h 文件包含用于构建测试的有用帮助程序。测试工具用于用户空间测试，内核空间测试参见上面的<a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/dev-tools/kselftest.html#test-module">测试模块</a>。</p>
+<p>tools/testing/selftests/seccomp/seccomp_bpf.c 中的测试可以用作示例。</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include "../kselftest_harness.h"
+
+TEST(standalone_test) {
+  do_some_stuff;
+  EXPECT_GT(10, stuff) {
+     stuff_state_t state;
+     enumerate_stuff_state(&amp;state);
+     TH_LOG("expectation failed with state: %s", state.msg);
+  }
+  more_stuff;
+  ASSERT_NE(some_stuff, NULL) TH_LOG("how did it happen?!");
+  last_stuff;
+  EXPECT_EQ(0, last_stuff);
+}
+
+FIXTURE(my_fixture) {
+  mytype_t *data;
+  int awesomeness_level;
+};
+FIXTURE_SETUP(my_fixture) {
+  self-&gt;data = mytype_new();
+  ASSERT_NE(NULL, self-&gt;data);
+}
+FIXTURE_TEARDOWN(my_fixture) {
+  mytype_free(self-&gt;data);
+}
+TEST_F(my_fixture, data_is_good) {
+  EXPECT_EQ(1, is_my_data_good(self-&gt;data));
+}
+
+TEST_HARNESS_MAIN <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="11-帮助"><a href="#11-帮助" class="headerlink" title="11 帮助"></a>11 帮助</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">TH_LOG<span class="token punctuation">(</span>fmt, <span class="token punctuation">..</span>.<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+fmt
+	格式字符串
+...
+	可选参数
+描述：
+	TH_LOG(format, ...)
+可在测试中使用的可选调试日志记录功能。通过定义TH_LOG_ENABLED可以启用或禁用日志记录。
+E.g.,
+#define TH_LOG_ENABLED 1
+如果未提供定义，则默认情况下启用日志记录。
+如果无法为运行测试的进程打印错误消息（例如，不允许写入stderr），则仍然有可能获得测试失败的ASSERT_*号。
+可以通过编写_metadata-&gt;no_print = true来启用此行为；
+在无法打印的检查序列之前。当发生错误时，测试过程将使用断言编号作为参数来调用_exit（2），
+而不是打印错误消息并调用abort（3），然后由父进程打印。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">TEST</span><span class="token punctuation">(</span>test_name<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>定义测试功能并创建注册存根</p>
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+test_name
+	test name
+
+描述：
+	TEST(name) { implementation }
+	
+通过名称定义测试。名称必须唯一，并且测试不能并行运行。包含block的实现是一个函数，作用域应这样对待。尽早返回可能只是简单的“返回”；声明。
+EXPECT_* 和ASSERT_* 在 TEST() { } 中是有效的.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">TEST_SIGNAL</span><span class="token punctuation">(</span>test_name<span class="token punctuation">,</span> signal<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+test_name
+	test name
+signal
+	signal number
+描述：
+	TEST_SIGNAL(name, signal) { implementation }
+	
+通过名称和期望的术语信号定义测试。名称必须唯一，并且测试不能并行运行。包含block的实现是一个函数，作用域应这样对待。尽早返回可能只是简单的“返回”；声明。
+EXPECT_* 和ASSERT_* 在 TEST() { } 中是有效的.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">FIXTURE_DATA</span><span class="token punctuation">(</span>datatype_name<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>包装结构名称，以便我们少传递一个参数</p>
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+datatype_name
+	datatype name
+描述：
+	FIXTURE_DATA(datatype name)
+	
+当需要数据的类型时，可以使用此调用。通常，除非将自身直接传递给帮助者，否则不需要这样做。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">FIXTURE</span><span class="token punctuation">(</span>fixture_name<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>每个灯具调用一次以设置数据并注册</p>
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+fixture_name
+	fixture name
+描述：
+	FIXTURE(datatype name) {
+  		type property1;
+  		...
+	};
+	
+将提供给TEST_F（）定义的测试的数据定义为self。应该使用FIXTURE_SETUP（）和FIXTURE_TEARDOWN（）进行填充和清理。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">FIXTURE_SETUP</span><span class="token punctuation">(</span>fixture_name<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>准备test的设置功能。包含_metadata，以便ASSERT_*方便使用</p>
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+fixture_name
+	fixture name
+描述：
+	FIXTURE_SETUP(fixture name) { implementation }
+	
+填充固件所需的“设置”功能。使用FIXTURE_DATA（）定义的数据类型的实例将作为实现公开给自己。
+ASSERT_ *在此上下文中有效，并且会阻止执行任何相关的夹具测试。
+裸露的“return”；语句可能用于提早返回。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">FIXTURE_TEARDOWN</span><span class="token punctuation">(</span>fixture_name<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+fixture_name
+	fixture name
+描述：
+	FIXTURE_TEARDOWN(fixture name) { implementation }
+	
+填充夹具所需的“teardown”功能。用FIXTURE_DATA（）定义的数据类型的实例将作为自身公开，以供实现清除。
+裸露的“return”；语句可能用于提早返回。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">TEST_F</span><span class="token punctuation">(</span>fixture_name<span class="token punctuation">,</span> test_name<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>为基于夹具的测试用例发出测试注册和帮助程序</p>
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+fixture_name
+	fixture name
+test_name
+	test name
+描述：
+	TEST_F(fixture, name) { implementation }
+	
+定义依赖夹具的测试（例如，属于测试用例的一部分）。与TEST（）极为相似，不同的是self是暴露给夹具以供实现使用的数据类型的设置实例。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">TEST_HARNESS_MAIN</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>简单的包装程序即可运行测试工具</p>
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+描述：
+	TEST_HARNESS_MAIN
+	
+使用一次即可将main（）附加到测试文件。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在TEST() 和TEST_F（）中使用的运算符。 ASSERT_ *调用将立即停止测试执行。 EXPECT_ *调用将发出失败警告，请注意并继续。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_EQ</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_EQ(expected, measured): expected == measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_NE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_NE(expected, measured): expected != measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_LT</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_LT(expected, measured): expected &lt; measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_LE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_LE(expected, measured): expected &lt;= measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_GT</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_GT(expected, measured): expected &gt; measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_GE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_GE(expected, measured): expected &gt;= measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_NULL</span><span class="token punctuation">(</span>seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+seen
+	measured value  被检测值
+描述：
+ASSERT_NULL(measured): NULL == measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_TRUE</span><span class="token punctuation">(</span>seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+seen
+	measured value  被检测值
+描述：
+ASSERT_TRUE(measured): measured != 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_FALSE</span><span class="token punctuation">(</span>seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+seen
+	measured value  被检测值
+描述：
+ASSERT_FALSE(measured): measured == 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_STREQ</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_STREQ(expected, measured): !strcmp(expected, measured)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">ASSERT_STRNE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+ASSERT_STRNE(expected, measured): strcmp(expected, measured)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_EQ</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_EQ(expected, measured): expected == measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_NE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_NE(expected, measured): expected != measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_LT</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_LT(expected, measured): expected &lt; measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_LE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_LE(expected, measured): expected &lt;= measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_GT</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_GT(expected, measured): expected &gt; measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_GE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_GE(expected, measured): expected &gt;= measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_NULL</span><span class="token punctuation">(</span>seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_NULL(measured): NULL == measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_TRUE</span><span class="token punctuation">(</span>seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_TRUE(measured): 0 != measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_FALSE</span><span class="token punctuation">(</span>seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_FALSE(measured): 0 == measured
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_STREQ</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_STREQ(expected, measured): !strcmp(expected, measured)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">EXPECT_STRNE</span><span class="token punctuation">(</span>expected<span class="token punctuation">,</span> seen<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-handlebars" data-language="handlebars"><code class="language-handlebars">参数：
+expected
+	expected value  期望值
+seen
+	measured value  被检测值
+描述：
+EXPECT_STRNE(expected, measured): strcmp(expected, measured)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">一只不停游泳的鱼儿</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://luxihua.space/blog/eef8a716.html">http://luxihua.space/blog/eef8a716.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/Qemu/">
+                                    <span class="chip bg-color">Qemu</span>
+                                </a>
+                            
+                                <a href="/tags/kernel/">
+                                    <span class="chip bg-color">kernel</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 't7fHma85zB34TKeJjc64jsGe-gzGzoHsz',
+        appKey: '5q4uaKjj8GE1wA3NxhVdl4f3',
+        serverURLs: 'https://t7fhma85.lc-cn-n1-shared.com',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'wavatar',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '如果你没有GitHub账号,还可以在这里评论啦!'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/blog/1ba862a3.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/222.jpeg" class="responsive-img" alt="Makefile-Tutorial-zh-CN">
+                        
+                        <span class="card-title">Makefile-Tutorial-zh-CN</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/make/">
+                        <span class="chip bg-color">make</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/1a3d20c9.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/242.jpeg" class="responsive-img" alt="使用qemu搭建ARM64调试环境,支持文件共享,支持gdb调试">
+                        
+                        <span class="card-title">使用qemu搭建ARM64调试环境,支持文件共享,支持gdb调试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/Qemu/">
+                        <span class="chip bg-color">Qemu</span>
+                    </a>
+                    
+                    <a href="/tags/kernel/">
+                        <span class="chip bg-color">kernel</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('6'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+                <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                            <span id="year">2023-2024</span>
+                            
+                                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery"
+                                        target="_blank">Matery</a>
+                                    
+                                            <br>
+                                            
+                                                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">
+                                                        193.6k
+                                                    </span>
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_pv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                                                                                    <span id="busuanzi_value_site_pv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                
+                                                                                    <span
+                                                                                        id="busuanzi_container_site_uv">
+                                                                                        &nbsp;|&nbsp;<i
+                                                                                            class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                                                                                            <span
+                                                                                                id="busuanzi_value_site_uv"
+                                                                                                class="white-color"></span>
+                                                                                    </span>
+                                                                                    
+                                                                                        <br>
+
+                                                                                        <!-- 运行天数提醒. -->
+                                                                                        
+                                                                                            <span id="sitetime"> Loading
+                                                                                                ...</span>
+                                                                                            <script>
+                                                                                                var calcSiteTime = function () {
+                                                                                                    var seconds = 1000;
+                                                                                                    var minutes = seconds * 60;
+                                                                                                    var hours = minutes * 60;
+                                                                                                    var days = hours * 24;
+                                                                                                    var years = days * 365;
+                                                                                                    var today = new Date();
+                                                                                                    var startYear = "2023";
+                                                                                                    var startMonth = "2";
+                                                                                                    var startDate = "21";
+                                                                                                    var startHour = "0";
+                                                                                                    var startMinute = "0";
+                                                                                                    var startSecond = "0";
+                                                                                                    var todayYear = today.getFullYear();
+                                                                                                    var todayMonth = today.getMonth() + 1;
+                                                                                                    var todayDate = today.getDate();
+                                                                                                    var todayHour = today.getHours();
+                                                                                                    var todayMinute = today.getMinutes();
+                                                                                                    var todaySecond = today.getSeconds();
+                                                                                                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                                    var diff = t2 - t1;
+                                                                                                    var diffYears = Math.floor(diff / years);
+                                                                                                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                                    // 区分是否有年份.
+                                                                                                    var language = 'zh-CN';
+                                                                                                    if (startYear === String(todayYear)) {
+                                                                                                        document.getElementById("year").innerHTML = todayYear;
+                                                                                                        var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                                    } else {
+                                                                                                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                        var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                            + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                                    }
+                                                                                                }
+
+                                                                                                calcSiteTime();
+                                                                                            </script>
+                                                                                            
+                                                                                                <br>
+                                                                                                
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lxh2010100" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1131729094@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://www.facebook.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+
+
+    <a href="https://twitter.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com/" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+                    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+                        <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+                            <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+                                <script
+                                    src="/libs/materialize/materialize.min.js"></script>
+                                <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+                                <script src="/libs/aos/aos.js"></script>
+                                <script
+                                    src="/libs/scrollprogress/scrollProgress.min.js"></script>
+                                <script
+                                    src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+                                <script src="/js/matery.js"></script>
+
+                                
+
+                                        
+
+                                                
+
+                                                        <!-- 雪花特效 -->
+                                                        
+                                                            <script type="text/javascript">
+                                                                // 只在桌面版网页启用特效
+                                                                var windowWidth = $(window).width();
+                                                                if (windowWidth > 768) {
+                                                                    document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+                                                                }
+                                                            </script>
+                                                            
+
+                                                                <!-- 鼠标星星特效 -->
+                                                                
+
+                                                                        
+                                                                            <script
+                                                                                src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+                                                                            <script
+                                                                                src="/libs/others/TencentCaptcha.js"></script>
+                                                                            <button id="TencentCaptcha"
+                                                                                data-appid="xxxxxxxxxx"
+                                                                                data-cbfn="callback" type="button"
+                                                                                hidden></button>
+                                                                            
+
+                                                                                <!-- Baidu Analytics -->
+
+                                                                                    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+                                                                                        
+                                                                                                
+                                                                                                    <script async
+                                                                                                        src="/libs/others/busuanzi.pure.mini.js"></script>
+                                                                                                    
+
+                                                                                                        
+
+                                                                                                                
+
+                                                                                                                        <!--腾讯兔小巢-->
+                                                                                                                        
+                                                                                                                                
+                                                                                                                                    <script
+                                                                                                                                        type="text/javascript"
+                                                                                                                                        color="0,0,255"
+                                                                                                                                        pointColor="0,0,255"
+                                                                                                                                        opacity='0.7'
+                                                                                                                                        zIndex="-1"
+                                                                                                                                        count="99"
+                                                                                                                                        src="/libs/background/canvas-nest.js"></script>
+                                                                                                                                    
+
+                                                                                                                                        
+
+                                                                                                                                                    
+                                                                                                                                                        <script
+                                                                                                                                                            type="text/javascript"
+                                                                                                                                                            src="/libs/background/ribbon-dynamic.js"
+                                                                                                                                                            async="async"></script>
+                                                                                                                                                        
+
+                                                                                                                                                            
+                                                                                                                                                                <script
+                                                                                                                                                                    src="/libs/instantpage/instantpage.js"
+                                                                                                                                                                    type="module"></script>
+                                                                                                                                                                
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

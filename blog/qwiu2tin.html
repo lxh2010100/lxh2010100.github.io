@@ -1,0 +1,1841 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第38课：抓取网页动态内容, 永远在路上">
+    <meta name="description" content="本文主要记录第38课：抓取网页动态内容">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第38课：抓取网页动态内容 | 华仔の小站</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="华仔の小站" type="application/atom+xml">
+</head>
+
+
+    <body>
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.jpeg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">华仔の小站</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/books" class="waves-effect waves-light">
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>书籍</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle-o" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-chain" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.jpeg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">华仔の小站</div>
+        <div class="logo-desc">
+            
+            从来没有真正的绝境，只有心灵的迷途
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/books" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-book"></i>
+			
+			书籍
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-chain"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+            
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/65.jpeg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第38课：抓取网页动态内容</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python-Core-50-Courses/">
+                                <span class="chip bg-color">Python-Core-50-Courses</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Python/" class="post-category">
+                                Python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-02-02
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-02-03
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    11 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism-atom-dark.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="第38课：抓取网页动态内容"><a href="#第38课：抓取网页动态内容" class="headerlink" title="第38课：抓取网页动态内容"></a>第38课：抓取网页动态内容</h2><p>根据权威机构发布的全球互联网可访问性审计报告，全球约有四分之三的网站其内容或部分内容是通过JavaScript动态生成的，这就意味着在浏览器窗口中“查看网页源代码”时无法在HTML代码中找到这些内容，也就是说我们之前用的抓取数据的方式无法正常运转了。解决这样的问题基本上有两种方案，一是获取提供动态内容的数据接口，这种方式也适用于抓取手机 App 的数据；另一种是通过自动化测试工具 Selenium 运行浏览器获取渲染后的动态内容。对于第一种方案，我们可以使用浏览器的“开发者工具”或者更为专业的抓包工具（如：Charles、Fiddler、Wireshark等）来获取到数据接口，后续的操作跟上一个章节中讲解的获取“360图片”网站的数据是一样的，这里我们不再进行赘述。这一章我们重点讲解如何使用自动化测试工具 Selenium 来获取网站的动态内容。</p>
+<h3 id="Selenium-介绍"><a href="#Selenium-介绍" class="headerlink" title="Selenium 介绍"></a>Selenium 介绍</h3><p>Selenium 是一个自动化测试工具，利用它可以驱动浏览器执行特定的行为，最终帮助爬虫开发者获取到网页的动态内容。简单的说，只要我们在浏览器窗口中能够看到的内容，都可以使用 Selenium 获取到，对于那些使用了 JavaScript 动态渲染技术的网站，Selenium 会是一个重要的选择。下面，我们还是以 Chrome 浏览器为例，来讲解 Selenium 的用法，大家需要先安装 Chrome 浏览器并下载它的驱动。Chrome 浏览器的驱动程序可以在<a target="_blank" rel="noopener" href="https://chromedriver.chromium.org/downloads">ChromeDriver官网</a>进行下载，驱动的版本要跟浏览器的版本对应，如果没有完全对应的版本，就选择版本代号最为接近的版本。</p>
+<img src="https://github.com/jackfrued/mypic/raw/master/20220310134558.png" style="zoom: 35%">
+
+<h3 id="使用Selenium"><a href="#使用Selenium" class="headerlink" title="使用Selenium"></a>使用Selenium</h3><p>我们可以先通过<code>pip</code>来安装 Selenium，命令如下所示。</p>
+<pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">pip install selenium<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="加载页面"><a href="#加载页面" class="headerlink" title="加载页面"></a>加载页面</h4><p>接下来，我们通过下面的代码驱动 Chrome 浏览器打开百度。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">from selenium import webdriver
+
+# 创建Chrome浏览器对象
+browser = webdriver.Chrome()
+# 加载指定的页面
+browser.get('https://www.baidu.com/')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果不愿意使用 Chrome 浏览器，也可以修改上面的代码操控其他浏览器，只需创建对应的浏览器对象（如 Firefox、Safari 等）即可。运行上面的程序，如果看到如下所示的错误提示，那是说明我们还没有将 Chrome 浏览器的驱动添加到 PATH 环境变量中，也没有在程序中指定 Chrome 浏览器驱动所在的位置。</p>
+<pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">selenium.common.exceptions.WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解决这个问题的办法有三种：</p>
+<ol>
+<li><p>将下载的 ChromeDriver 放到已有的 PATH 环境变量下，建议直接跟 Python 解释器放在同一个目录，因为之前安装 Python 的时候我们已经将 Python 解释器的路径放到 PATH 环境变量中了。</p>
+</li>
+<li><p>将 ChromeDriver 放到项目虚拟环境下的 <code>bin</code> 文件夹中（Windows 系统对应的目录是 <code>Scripts</code>），这样 ChromeDriver 就跟虚拟环境下的 Python 解释器在同一个位置，肯定是能够找到的。</p>
+</li>
+<li><p>修改上面的代码，在创建 Chrome 对象时，通过<code>service</code>参数配置<code>Service</code>对象，并通过创建<code>Service</code>对象的<code>executable_path</code>参数指定 ChromeDriver 所在的位置，如下所示：</p>
+ <pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
+browser = webdriver.Chrome(service=Service(executable_path='venv/bin/chromedriver'))
+browser.get('https://www.baidu.com/')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h4 id="查找元素和模拟用户行为"><a href="#查找元素和模拟用户行为" class="headerlink" title="查找元素和模拟用户行为"></a>查找元素和模拟用户行为</h4><p>接下来，我们可以尝试模拟用户在百度首页的文本框输入搜索关键字并点击“百度一下”按钮。在完成页面加载后，可以通过<code>Chrome</code>对象的<code>find_element</code>和<code>find_elements</code>方法来获取页面元素，Selenium 支持多种获取元素的方式，包括：CSS 选择器、XPath、元素名字（标签名）、元素 ID、类名等，前者可以获取单个页面元素（<code>WebElement</code>对象），后者可以获取多个页面元素构成的列表。获取到<code>WebElement</code>对象以后，可以通过<code>send_keys</code>来模拟用户输入行为，可以通过<code>click</code>来模拟用户点击操作，代码如下所示。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+browser = webdriver.Chrome()
+browser.get('https://www.baidu.com/')
+# 通过元素ID获取元素
+kw_input = browser.find_element(By.ID, 'kw')
+# 模拟用户输入行为
+kw_input.send_keys('Python')
+# 通过CSS选择器获取元素
+su_button = browser.find_element(By.CSS_SELECTOR, '#su')
+# 模拟用户点击行为
+su_button.click()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果要执行一个系列动作，例如模拟拖拽操作，可以创建<code>ActionChains</code>对象，有兴趣的读者可以自行研究。</p>
+<h4 id="隐式等待和显式等待"><a href="#隐式等待和显式等待" class="headerlink" title="隐式等待和显式等待"></a>隐式等待和显式等待</h4><p>这里还有一个细节需要大家知道，网页上的元素可能是动态生成的，在我们使用<code>find_element</code>或<code>find_elements</code>方法获取的时候，可能还没有完成渲染，这时会引发<code>NoSuchElementException</code>错误。为了解决这个问题，我们可以使用隐式等待的方式，通过设置等待时间让浏览器完成对页面元素的渲染。除此之外，我们还可以使用显示等待，通过创建<code>WebDriverWait</code>对象，并设置等待时间和条件，当条件没有满足时，我们可以先等待再尝试进行后续的操作，具体的代码如下所示。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
+browser = webdriver.Chrome()
+# 设置浏览器窗口大小
+browser.set_window_size(1200, 800)
+browser.get('https://www.baidu.com/')
+# 设置隐式等待时间为10秒
+browser.implicitly_wait(10)
+kw_input = browser.find_element(By.ID, 'kw')
+kw_input.send_keys('Python')
+su_button = browser.find_element(By.CSS_SELECTOR, '#su')
+su_button.click()
+# 创建显示等待对象
+wait_obj = WebDriverWait(browser, 10)
+# 设置等待条件（等搜索结果的div出现）
+wait_obj.until(
+    expected_conditions.presence_of_element_located(
+        (By.CSS_SELECTOR, '#content_left')
+    )
+)
+# 截屏
+browser.get_screenshot_as_file('python_result.png')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面设置的等待条件<code>presence_of_element_located</code>表示等待指定元素出现，下面的表格列出了常用的等待条件及其含义。</p>
+<table>
+<thead>
+<tr>
+<th>等待条件</th>
+<th>具体含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>title_is / title_contains</code></td>
+<td>标题是指定的内容 / 标题包含指定的内容</td>
+</tr>
+<tr>
+<td><code>visibility_of</code></td>
+<td>元素可见</td>
+</tr>
+<tr>
+<td><code>presence_of_element_located</code></td>
+<td>定位的元素加载完成</td>
+</tr>
+<tr>
+<td><code>visibility_of_element_located</code></td>
+<td>定位的元素变得可见</td>
+</tr>
+<tr>
+<td><code>invisibility_of_element_located</code></td>
+<td>定位的元素变得不可见</td>
+</tr>
+<tr>
+<td><code>presence_of_all_elements_located</code></td>
+<td>定位的所有元素加载完成</td>
+</tr>
+<tr>
+<td><code>text_to_be_present_in_element</code></td>
+<td>元素包含指定的内容</td>
+</tr>
+<tr>
+<td><code>text_to_be_present_in_element_value</code></td>
+<td>元素的<code>value</code>属性包含指定的内容</td>
+</tr>
+<tr>
+<td><code>frame_to_be_available_and_switch_to_it</code></td>
+<td>载入并切换到指定的内部窗口</td>
+</tr>
+<tr>
+<td><code>element_to_be_clickable</code></td>
+<td>元素可点击</td>
+</tr>
+<tr>
+<td><code>element_to_be_selected</code></td>
+<td>元素被选中</td>
+</tr>
+<tr>
+<td><code>element_located_to_be_selected</code></td>
+<td>定位的元素被选中</td>
+</tr>
+<tr>
+<td><code>alert_is_present</code></td>
+<td>出现 Alert 弹窗</td>
+</tr>
+</tbody></table>
+<h4 id="执行JavaScript代码"><a href="#执行JavaScript代码" class="headerlink" title="执行JavaScript代码"></a>执行JavaScript代码</h4><p>对于使用瀑布式加载的页面，如果希望在浏览器窗口中加载更多的内容，可以通过浏览器对象的<code>execute_scripts</code>方法执行 JavaScript 代码来实现。对于一些高级的爬取操作，也很有可能会用到类似的操作，如果你的爬虫代码需要 JavaScript 的支持，建议先对 JavaScript 进行适当的了解，尤其是 JavaScript 中的 BOM 和 DOM 操作。我们在上面的代码中截屏之前加入下面的代码，这样就可以利用 JavaScript 将网页滚到最下方。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python"># 执行JavaScript代码
+browser.execute_script('document.documentElement.scrollTop = document.documentElement.scrollHeight')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="Selenium反爬的破解"><a href="#Selenium反爬的破解" class="headerlink" title="Selenium反爬的破解"></a>Selenium反爬的破解</h4><p>有一些网站专门针对 Selenium 设置了反爬措施，因为使用 Selenium 驱动的浏览器，在控制台中可以看到如下所示的<code>webdriver</code>属性值为<code>true</code>，如果要绕过这项检查，可以在加载页面之前，先通过执行 JavaScript 代码将其修改为<code>undefined</code>。</p>
+<img src="https://github.com/jackfrued/mypic/raw/master/20220310154246.png" style="zoom:50%">
+
+<p>另一方面，我们还可以将浏览器窗口上的“Chrome正受到自动测试软件的控制”隐藏掉，完整的代码如下所示。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python"># 创建Chrome参数对象
+options = webdriver.ChromeOptions()
+# 添加试验性参数
+options.add_experimental_option('excludeSwitches', ['enable-automation'])
+options.add_experimental_option('useAutomationExtension', False)
+# 创建Chrome浏览器对象并传入参数
+browser = webdriver.Chrome(options=options)
+# 执行Chrome开发者协议命令（在加载页面时执行指定的JavaScript代码）
+browser.execute_cdp_cmd(
+    'Page.addScriptToEvaluateOnNewDocument',
+    {'source': 'Object.defineProperty(navigator, "webdriver", {get: () =&gt; undefined})'}
+)
+browser.set_window_size(1200, 800)
+browser.get('https://www.baidu.com/')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="无头浏览器"><a href="#无头浏览器" class="headerlink" title="无头浏览器"></a>无头浏览器</h4><p>很多时候，我们在爬取数据时并不需要看到浏览器窗口，只要有 Chrome 浏览器以及对应的驱动程序，我们的爬虫就能够运转起来。如果不想看到浏览器窗口，我们可以通过下面的方式设置使用无头浏览器。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+browser = webdriver.Chrome(options=options)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="API参考"><a href="#API参考" class="headerlink" title="API参考"></a>API参考</h3><p>Selenium 相关的知识还有很多，我们在此就不一一赘述了，下面为大家罗列一些浏览器对象和<code>WebElement</code>对象常用的属性和方法。具体的内容大家还可以参考 Selenium <a target="_blank" rel="noopener" href="https://selenium-python-zh.readthedocs.io/en/latest/index.html">官方文档的中文翻译</a>。</p>
+<h4 id="浏览器对象"><a href="#浏览器对象" class="headerlink" title="浏览器对象"></a>浏览器对象</h4><p>表1. 常用属性</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>current_url</code></td>
+<td>当前页面的URL</td>
+</tr>
+<tr>
+<td><code>current_window_handle</code></td>
+<td>当前窗口的句柄（引用）</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>浏览器的名称</td>
+</tr>
+<tr>
+<td><code>orientation</code></td>
+<td>当前设备的方向（横屏、竖屏）</td>
+</tr>
+<tr>
+<td><code>page_source</code></td>
+<td>当前页面的源代码（包括动态内容）</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>当前页面的标题</td>
+</tr>
+<tr>
+<td><code>window_handles</code></td>
+<td>浏览器打开的所有窗口的句柄</td>
+</tr>
+</tbody></table>
+<p>表2. 常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>back</code> / <code>forward</code></td>
+<td>在浏览历史记录中后退/前进</td>
+</tr>
+<tr>
+<td><code>close</code> / <code>quit</code></td>
+<td>关闭当前浏览器窗口 / 退出浏览器实例</td>
+</tr>
+<tr>
+<td><code>get</code></td>
+<td>加载指定 URL 的页面到浏览器中</td>
+</tr>
+<tr>
+<td><code>maximize_window</code></td>
+<td>将浏览器窗口最大化</td>
+</tr>
+<tr>
+<td><code>refresh</code></td>
+<td>刷新当前页面</td>
+</tr>
+<tr>
+<td><code>set_page_load_timeout</code></td>
+<td>设置页面加载超时时间</td>
+</tr>
+<tr>
+<td><code>set_script_timeout</code></td>
+<td>设置 JavaScript 执行超时时间</td>
+</tr>
+<tr>
+<td><code>implicit_wait</code></td>
+<td>设置等待元素被找到或目标指令完成</td>
+</tr>
+<tr>
+<td><code>get_cookie</code> / <code>get_cookies</code></td>
+<td>获取指定的Cookie / 获取所有Cookie</td>
+</tr>
+<tr>
+<td><code>add_cookie</code></td>
+<td>添加 Cookie 信息</td>
+</tr>
+<tr>
+<td><code>delete_cookie</code> / <code>delete_all_cookies</code></td>
+<td>删除指定的 Cookie / 删除所有 Cookie</td>
+</tr>
+<tr>
+<td><code>find_element</code> / <code>find_elements</code></td>
+<td>查找单个元素 / 查找一系列元素</td>
+</tr>
+</tbody></table>
+<h4 id="WebElement对象"><a href="#WebElement对象" class="headerlink" title="WebElement对象"></a>WebElement对象</h4><p>表1. WebElement常用属性</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>location</code></td>
+<td>元素的位置</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>元素的尺寸</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>元素的文本内容</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>元素的 ID</td>
+</tr>
+<tr>
+<td><code>tag_name</code></td>
+<td>元素的标签名</td>
+</tr>
+</tbody></table>
+<p>表2. 常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>clear</code></td>
+<td>清空文本框或文本域中的内容</td>
+</tr>
+<tr>
+<td><code>click</code></td>
+<td>点击元素</td>
+</tr>
+<tr>
+<td><code>get_attribute</code></td>
+<td>获取元素的属性值</td>
+</tr>
+<tr>
+<td><code>is_displayed</code></td>
+<td>判断元素对于用户是否可见</td>
+</tr>
+<tr>
+<td><code>is_enabled</code></td>
+<td>判断元素是否处于可用状态</td>
+</tr>
+<tr>
+<td><code>is_selected</code></td>
+<td>判断元素（单选框和复选框）是否被选中</td>
+</tr>
+<tr>
+<td><code>send_keys</code></td>
+<td>模拟输入文本</td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td>提交表单</td>
+</tr>
+<tr>
+<td><code>value_of_css_property</code></td>
+<td>获取指定的CSS属性值</td>
+</tr>
+<tr>
+<td><code>find_element</code> / <code>find_elements</code></td>
+<td>获取单个子元素 / 获取一系列子元素</td>
+</tr>
+<tr>
+<td><code>screenshot</code></td>
+<td>为元素生成快照</td>
+</tr>
+</tbody></table>
+<h3 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h3><p>下面的例子演示了如何使用 Selenium 从“360图片”网站搜索和下载图片。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">import os
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+DOWNLOAD_PATH = 'images/'
+
+
+def download_picture(picture_url: str):
+    """
+    下载保存图片
+    :param picture_url: 图片的URL
+    """
+    filename = picture_url[picture_url.rfind('/') + 1:]
+    resp = requests.get(picture_url)
+    with open(os.path.join(DOWNLOAD_PATH, filename), 'wb') as file:
+        file.write(resp.content)
+
+
+if not os.path.exists(DOWNLOAD_PATH):
+    os.makedirs(DOWNLOAD_PATH)
+browser = webdriver.Chrome()
+browser.get('https://image.so.com/z?ch=beauty')
+browser.implicitly_wait(10)
+kw_input = browser.find_element(By.CSS_SELECTOR, 'input[name=q]')
+kw_input.send_keys('苍老师')
+kw_input.send_keys(Keys.ENTER)
+for _ in range(10):
+    browser.execute_script(
+        'document.documentElement.scrollTop = document.documentElement.scrollHeight'
+    )
+    time.sleep(1)
+imgs = browser.find_elements(By.CSS_SELECTOR, 'div.waterfall img')
+with ThreadPoolExecutor(max_workers=32) as pool:
+    for img in imgs:
+        pic_url = img.get_attribute('src')
+        pool.submit(download_picture, pic_url)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行上面的代码，检查指定的目录下是否下载了根据关键词搜索到的图片。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">一只不停游泳的鱼儿</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://luxihua.space/blog/qwiu2tin.html">http://luxihua.space/blog/qwiu2tin.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Python-Core-50-Courses/">
+                                    <span class="chip bg-color">Python-Core-50-Courses</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 't7fHma85zB34TKeJjc64jsGe-gzGzoHsz',
+        appKey: '5q4uaKjj8GE1wA3NxhVdl4f3',
+        serverURLs: 'https://t7fhma85.lc-cn-n1-shared.com',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'wavatar',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '如果你没有GitHub账号,还可以在这里评论啦!'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/blog/2tebbyrg.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/198.jpeg" class="responsive-img" alt="第37课：并发编程在爬虫中的应用">
+                        
+                        <span class="card-title">第37课：并发编程在爬虫中的应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要记录第37课：并发编程在爬虫中的应用
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python-Core-50-Courses/">
+                        <span class="chip bg-color">Python-Core-50-Courses</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/nbaybo9h.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="第39课：爬虫框架Scrapy简介">
+                        
+                        <span class="card-title">第39课：爬虫框架Scrapy简介</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要记录第39课：爬虫框架Scrapy简介
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python-Core-50-Courses/">
+                        <span class="chip bg-color">Python-Core-50-Courses</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('6'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+                <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                            <span id="year">2023-2024</span>
+                            
+                                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery"
+                                        target="_blank">Matery</a>
+                                    
+                                            <br>
+                                            
+                                                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">
+                                                        193.6k
+                                                    </span>
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_pv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                                                                                    <span id="busuanzi_value_site_pv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                
+                                                                                    <span
+                                                                                        id="busuanzi_container_site_uv">
+                                                                                        &nbsp;|&nbsp;<i
+                                                                                            class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                                                                                            <span
+                                                                                                id="busuanzi_value_site_uv"
+                                                                                                class="white-color"></span>
+                                                                                    </span>
+                                                                                    
+                                                                                        <br>
+
+                                                                                        <!-- 运行天数提醒. -->
+                                                                                        
+                                                                                            <span id="sitetime"> Loading
+                                                                                                ...</span>
+                                                                                            <script>
+                                                                                                var calcSiteTime = function () {
+                                                                                                    var seconds = 1000;
+                                                                                                    var minutes = seconds * 60;
+                                                                                                    var hours = minutes * 60;
+                                                                                                    var days = hours * 24;
+                                                                                                    var years = days * 365;
+                                                                                                    var today = new Date();
+                                                                                                    var startYear = "2023";
+                                                                                                    var startMonth = "2";
+                                                                                                    var startDate = "21";
+                                                                                                    var startHour = "0";
+                                                                                                    var startMinute = "0";
+                                                                                                    var startSecond = "0";
+                                                                                                    var todayYear = today.getFullYear();
+                                                                                                    var todayMonth = today.getMonth() + 1;
+                                                                                                    var todayDate = today.getDate();
+                                                                                                    var todayHour = today.getHours();
+                                                                                                    var todayMinute = today.getMinutes();
+                                                                                                    var todaySecond = today.getSeconds();
+                                                                                                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                                    var diff = t2 - t1;
+                                                                                                    var diffYears = Math.floor(diff / years);
+                                                                                                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                                    // 区分是否有年份.
+                                                                                                    var language = 'zh-CN';
+                                                                                                    if (startYear === String(todayYear)) {
+                                                                                                        document.getElementById("year").innerHTML = todayYear;
+                                                                                                        var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                                    } else {
+                                                                                                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                        var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                            + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                                    }
+                                                                                                }
+
+                                                                                                calcSiteTime();
+                                                                                            </script>
+                                                                                            
+                                                                                                <br>
+                                                                                                
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lxh2010100" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1131729094@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://www.facebook.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+
+
+    <a href="https://twitter.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com/" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+                    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+                        <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+                            <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+                                <script
+                                    src="/libs/materialize/materialize.min.js"></script>
+                                <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+                                <script src="/libs/aos/aos.js"></script>
+                                <script
+                                    src="/libs/scrollprogress/scrollProgress.min.js"></script>
+                                <script
+                                    src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+                                <script src="/js/matery.js"></script>
+
+                                
+
+                                        
+
+                                                
+
+                                                        <!-- 雪花特效 -->
+                                                        
+                                                            <script type="text/javascript">
+                                                                // 只在桌面版网页启用特效
+                                                                var windowWidth = $(window).width();
+                                                                if (windowWidth > 768) {
+                                                                    document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+                                                                }
+                                                            </script>
+                                                            
+
+                                                                <!-- 鼠标星星特效 -->
+                                                                
+
+                                                                        
+                                                                            <script
+                                                                                src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+                                                                            <script
+                                                                                src="/libs/others/TencentCaptcha.js"></script>
+                                                                            <button id="TencentCaptcha"
+                                                                                data-appid="xxxxxxxxxx"
+                                                                                data-cbfn="callback" type="button"
+                                                                                hidden></button>
+                                                                            
+
+                                                                                <!-- Baidu Analytics -->
+
+                                                                                    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+                                                                                        
+                                                                                                
+                                                                                                    <script async
+                                                                                                        src="/libs/others/busuanzi.pure.mini.js"></script>
+                                                                                                    
+
+                                                                                                        
+
+                                                                                                                
+
+                                                                                                                        <!--腾讯兔小巢-->
+                                                                                                                        
+                                                                                                                                
+                                                                                                                                    <script
+                                                                                                                                        type="text/javascript"
+                                                                                                                                        color="0,0,255"
+                                                                                                                                        pointColor="0,0,255"
+                                                                                                                                        opacity='0.7'
+                                                                                                                                        zIndex="-1"
+                                                                                                                                        count="99"
+                                                                                                                                        src="/libs/background/canvas-nest.js"></script>
+                                                                                                                                    
+
+                                                                                                                                        
+
+                                                                                                                                                    
+                                                                                                                                                        <script
+                                                                                                                                                            type="text/javascript"
+                                                                                                                                                            src="/libs/background/ribbon-dynamic.js"
+                                                                                                                                                            async="async"></script>
+                                                                                                                                                        
+
+                                                                                                                                                            
+                                                                                                                                                                <script
+                                                                                                                                                                    src="/libs/instantpage/instantpage.js"
+                                                                                                                                                                    type="module"></script>
+                                                                                                                                                                
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

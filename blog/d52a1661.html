@@ -1,0 +1,1972 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="unix-makefile-tutorial-cn, 永远在路上">
+    <meta name="description" content="Unix Makefile 教程Tutorials Point Unix Makefile tutorial 中文版翻译。
+Unix Makefile 基本教程Makefile是一个在Unix，Linux及其版本上运行的程序构建工具。它有助">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>unix-makefile-tutorial-cn | 华仔の小站</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="华仔の小站" type="application/atom+xml">
+</head>
+
+
+    <body>
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.jpeg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">华仔の小站</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/books" class="waves-effect waves-light">
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>书籍</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle-o" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-chain" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.jpeg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">华仔の小站</div>
+        <div class="logo-desc">
+            
+            从来没有真正的绝境，只有心灵的迷途
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/books" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-book"></i>
+			
+			书籍
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-chain"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+            
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/220.jpeg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">unix-makefile-tutorial-cn</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/make/">
+                                <span class="chip bg-color">make</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-04-16
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-02-03
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    21 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism-atom-dark.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Unix-Makefile-教程"><a href="#Unix-Makefile-教程" class="headerlink" title="Unix Makefile 教程"></a>Unix Makefile 教程</h1><p>Tutorials Point <a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/makefile/index.htm">Unix Makefile tutorial</a> 中文版翻译。</p>
+<h1 id="Unix-Makefile-基本教程"><a href="#Unix-Makefile-基本教程" class="headerlink" title="Unix Makefile 基本教程"></a>Unix Makefile 基本教程</h1><p>Makefile是一个在Unix，Linux及其版本上运行的程序构建工具。它有助于简化可能需要各种模块的构建程序可执行文件。要确定模块需要如何编译或重新编译在一起，需要用户在 Makefile 中定义make的行为。本教程会增强你对 Makefile 的结构和实用的了解。</p>
+<h2 id="听众"><a href="#听众" class="headerlink" title="听众"></a>听众</h2><p>Makefilemake在编译和链接程序模块时指导实用程序。任何想使用make工具编译程序并希望获得有关 makefile 知识的人都建议阅读本教程。</p>
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><p>本教程希望对编程语言（如C和C ++）有很好的理解。希望读者了解链接（link），加载概念（loading concepts），以及如何在Unix / Linux 环境下编译和执行程序。</p>
+<h2 id="英文原文"><a href="#英文原文" class="headerlink" title="英文原文"></a>英文原文</h2><p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/makefile/index.htm">https://www.tutorialspoint.com/makefile/index.htm</a></p>
+<h1 id="为什么我们需要-Makefile"><a href="#为什么我们需要-Makefile" class="headerlink" title="为什么我们需要 Makefile?"></a>为什么我们需要 Makefile?</h1><p>手动编译源代码文件很麻烦，特别是当你要编译多个源文件，并切每次编译都要重复输入编译命令的时候。而 Makefiles 正是为了简化这个过程的一个工具。</p>
+<p>首先你需要了解 Makefiles 是一种特殊格式的文件，可帮助自动构建和管理项目。</p>
+<p>例如，我们假设我们有以下源文件。</p>
+<ul>
+<li>main.cpp</li>
+<li>hello.cpp</li>
+<li>factorial.cpp</li>
+<li>functions.h</li>
+</ul>
+<p><em>main.cpp中</em></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"functions.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token function">print_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   cout <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+   cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The factorial of 5 is "</span> <span class="token operator">&lt;&lt;</span> <span class="token function">factorial</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><em>hello.cpp</em></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"functions.h"</span></span>
+
+<span class="token keyword">void</span> <span class="token function">print_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><em>factorial.cpp</em></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"functions.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">factorial</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+   <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">(</span>n <span class="token operator">*</span> <span class="token function">factorial</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><em>functions.h</em></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">print_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">factorial</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>编译文件并获取可执行文件的简单方法是运行命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc  main.cpp hello.cpp factorial.cpp <span class="token parameter variable">-o</span> hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>该命令生成 hello 二进制文件。在这个例子中，我们的项目里只有四个文件，同时我们也知道这些函数调用的顺序。因此，键入上述命令并准备最终二进制文件是可行的。但是，对于拥有数千个源代码文件的大型项目来说，想要维护这个二进制版本会变得非常困难。</p>
+<p>不过没关系，make命令正是用来管理大型程序或程序组的。当你开始编写大型程序时，你会注意到重新编译大型程序比重新编译短程序需要更长的时间。此外，你也可能注意到通常情况下开发者只能在程序的一小部分（例如单个函数）上工作，其余大部分程序文件都没有变化。</p>
+<p>在随后的部分中，我们看到如何为我们的项目准备一个 Makefile。</p>
+<h1 id="Makefile-宏"><a href="#Makefile-宏" class="headerlink" title="Makefile - 宏"></a>Makefile - 宏</h1><p><code>make</code> 允许你使用类似变量的宏。宏在 Makefile 中使用 名称 = 值 的形式来定义。例如</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">MACROS  <span class="token operator">=</span> -me
+PSROFF  <span class="token operator">=</span> groff -Tps
+DITROFF <span class="token operator">=</span> groff -Tdvi
+CFLAGS  <span class="token operator">=</span> -O -systype bsd43
+LIBS    <span class="token operator">=</span> <span class="token string">"-lncurses -lm -lsdl"</span>
+MYFACE  <span class="token operator">=</span> <span class="token string">":*)"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="特殊的宏"><a href="#特殊的宏" class="headerlink" title="特殊的宏"></a>特殊的宏</h2><p>在运行任何目标集（target rule set）中的指令之前，有一些预定义的特殊宏 -</p>
+<ul>
+<li><p><strong>$@</strong> 要创建的文件的名称。</p>
+</li>
+<li><p><strong>$?</strong> 是被更改的对应文件名。</p>
+</li>
+</ul>
+<p>例如，在下列场景中我们可以使用如下规则：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">hello</span><span class="token punctuation">:</span> main.cpp hello.cpp factorial.cpp
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> <span class="token variable">$?</span> <span class="token variable">$</span><span class="token punctuation">(</span>LDFLAGS<span class="token punctuation">)</span> -o <span class="token variable">$@</span>
+
+或者 −
+
+<span class="token target symbol">hello</span><span class="token punctuation">:</span> main.cpp hello.cpp factorial.cpp
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> <span class="token variable">$@.cpp</span> <span class="token variable">$</span><span class="token punctuation">(</span>LDFLAGS<span class="token punctuation">)</span> -o <span class="token variable">$@</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个例子中，像 $(CC) $(CFLAGS) $? $(LDFLAGS) -o $@ 这样的操作行应该在行首输入一个制表符 (\t) ，否则 make 会报错。 其中的 $@ 代表 hello 同时 $? 或者 $@.cpp 则代表所有已修改源文件。</p>
+<p>同时默认规则中还有另外两个特殊的宏。他们分别是 -</p>
+<ul>
+<li><p><strong>$&lt;</strong> 触发操作的相关文件的名称。</p>
+</li>
+<li><p><strong>$*</strong> 由目标文件和依赖文件共享的前缀。</p>
+</li>
+</ul>
+<p>常见的隐式规则是用于构建 .cpp（源文件）之外的 .o（对象）文件。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">.cpp.o</span><span class="token punctuation">:</span>
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> -c <span class="token variable">$&lt;</span>
+
+或者 −
+
+<span class="token target symbol">.cpp.o</span><span class="token punctuation">:</span>
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> -c <span class="token variable">$*.c</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="常规宏"><a href="#常规宏" class="headerlink" title="常规宏"></a>常规宏</h2><p>有各种默认的宏。你可以通过 “make -p” 命令看到他们。大多数的常规宏都是见名知意。</p>
+<p>这些预定义变量（即隐式规则中使用的宏）分为两类 -</p>
+<ul>
+<li><p>作为程序名称的宏（如CC）</p>
+</li>
+<li><p>包含程序参数的宏（如CFLAGS）。</p>
+</li>
+</ul>
+<p>以下是一些用作 Makefile 内置规则中程序名称的常用变量表。</p>
+<table>
+<thead>
+<tr>
+<th align="left">AR</th>
+<th align="left">档案保存程序;默认是`ar’。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">AS</td>
+<td align="left">编译汇编文件的程序；默认是 `as’。</td>
+</tr>
+<tr>
+<td align="left">CC</td>
+<td align="left">编译 C 语言文件的程序；默认是 `cc’.</td>
+</tr>
+<tr>
+<td align="left">CO</td>
+<td align="left">Program for checking out files from RCS; default is `co’.</td>
+</tr>
+<tr>
+<td align="left">CXX</td>
+<td align="left">编译 C++ 文件的程序; 默认是 `g++’.</td>
+</tr>
+<tr>
+<td align="left">CPP</td>
+<td align="left">运行 C 预处理器并输出到当前输出流的程序; 默认是 `$(CC) -E’.</td>
+</tr>
+<tr>
+<td align="left">FC</td>
+<td align="left">Program for compiling or preprocessing Fortran and Ratfor programs; default is `f77’.</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">Program for extracting a file from SCCS; default is `get’.</td>
+</tr>
+<tr>
+<td align="left">LEX</td>
+<td align="left">Program to use to turn Lex grammars into source code; default is `lex’.</td>
+</tr>
+<tr>
+<td align="left">YACC</td>
+<td align="left">Program to use to turn Yacc grammars into source code; default is `yacc’.</td>
+</tr>
+<tr>
+<td align="left">LINT</td>
+<td align="left">Program to use to run lint on source code; default is `lint’.</td>
+</tr>
+<tr>
+<td align="left">M2C</td>
+<td align="left">Program to use to compile Modula-2 source code; default is `m2c’.</td>
+</tr>
+<tr>
+<td align="left">PC</td>
+<td align="left">编译 Pascal 的程序；默认值是 `pc’。</td>
+</tr>
+<tr>
+<td align="left">MAKEINFO</td>
+<td align="left">Program to convert a Texinfo source file into an Info file; default is `makeinfo’.</td>
+</tr>
+<tr>
+<td align="left">TEX</td>
+<td align="left">Program to make TeX dvi files from TeX source; default is `tex’.</td>
+</tr>
+<tr>
+<td align="left">TEXI2DVI</td>
+<td align="left">Program to make TeX dvi files from Texinfo source; default is `texi2dvi’.</td>
+</tr>
+<tr>
+<td align="left">WEAVE</td>
+<td align="left">将 Web 转化为 TeX 的程序；默认值是 `weave’。</td>
+</tr>
+<tr>
+<td align="left">CWEAVE</td>
+<td align="left">将 C Web 转换为 TeX 的程序；默认值是 `cweave’。</td>
+</tr>
+<tr>
+<td align="left">TANGLE</td>
+<td align="left">将 Web 转化为 Pascal 的程序；默认值是 `tangle’。</td>
+</tr>
+<tr>
+<td align="left">CTANGLE</td>
+<td align="left">将 C Web 转换为 C 的程序；默认值是 `ctangle’。</td>
+</tr>
+<tr>
+<td align="left">RM</td>
+<td align="left">删除文件的命令；默认是 `rm -f’.</td>
+</tr>
+</tbody></table>
+<p>这是一个变量表，其值是上述程序的附加参数。除非另有说明，否则所有这些变量的默认值都是空字符串。</p>
+<table>
+<thead>
+<tr>
+<th align="left">ARFLAGS</th>
+<th align="left">Flags to give the archive-maintaining program; default is `rv’.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ASFLAGS</td>
+<td align="left">Extra flags to give to the assembler when explicitly invoked on a `.s’ or `.S’ file.</td>
+</tr>
+<tr>
+<td align="left">CFLAGS</td>
+<td align="left">传递给 C 编译器的额外 flag。</td>
+</tr>
+<tr>
+<td align="left">CXXFLAGS</td>
+<td align="left">传递给 C 编译器 的额外 flag。</td>
+</tr>
+<tr>
+<td align="left">COFLAGS</td>
+<td align="left">Extra flags to give to the RCS co program.</td>
+</tr>
+<tr>
+<td align="left">CPPFLAGS</td>
+<td align="left">Extra flags to give to the C preprocessor and programs, which use it (such as C and Fortran compilers).</td>
+</tr>
+<tr>
+<td align="left">FFLAGS</td>
+<td align="left">Extra flags to give to the Fortran compiler.</td>
+</tr>
+<tr>
+<td align="left">GFLAGS</td>
+<td align="left">Extra flags to give to the SCCS get program.</td>
+</tr>
+<tr>
+<td align="left">LDFLAGS</td>
+<td align="left">Extra flags to give to compilers when they are supposed to invoke the linker, `ld’.</td>
+</tr>
+<tr>
+<td align="left">LFLAGS</td>
+<td align="left">Extra flags to give to Lex.</td>
+</tr>
+<tr>
+<td align="left">YFLAGS</td>
+<td align="left">Extra flags to give to Yacc.</td>
+</tr>
+<tr>
+<td align="left">PFLAGS</td>
+<td align="left">Extra flags to give to the Pascal compiler.</td>
+</tr>
+<tr>
+<td align="left">RFLAGS</td>
+<td align="left">Extra flags to give to the Fortran compiler for Ratfor programs.</td>
+</tr>
+<tr>
+<td align="left">LINTFLAGS</td>
+<td align="left">Extra flags to give to lint.</td>
+</tr>
+</tbody></table>
+<p>**注 **- 你可以使用 ‘-R’ 或 ‘–no-builtin-variables’ 选项取消隐式规则使用的所有变量。</p>
+<p>你也可以在命令行中定义宏，如下所示 -</p>
+<pre class="line-numbers language-none"><code class="language-none">make CPP = /home/courses/cop4530/spring02<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="Makefile-依赖关系"><a href="#Makefile-依赖关系" class="headerlink" title="Makefile - 依赖关系"></a>Makefile - 依赖关系</h1><p>最后构建得到的二进制文件依赖于各种源代码和头文件是很常见的。依赖关系很重要，因为它们让 <code>make</code> 知道的任何执行<strong>目标</strong>的依赖。考虑下面的例子 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">hello</span><span class="token punctuation">:</span> main.o factorial.o hello.o
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> main.o factorial.o hello.o -o hello<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>其中，hello 为 make 的一个目标（target），而 hello 这个<strong>目标</strong>达成依赖于 main.o，factorial.o 和 hello.o 三个依赖（每个依赖都是另一个目标/文件）。因此，不论哪个依赖的目标发生了变化后， <code>make</code> 都会采取行动来重新（执行命令来）达到<strong>目标</strong>（即重新执行 <code>$(CC) main.o factorial.o hello.o -o hello</code>）。</p>
+<p>同时，我们需要告诉 <code>make</code> 如何准备 .o 文件（即 hello 依赖的三个目标/文件）。因此我们需要定义这些依赖关系如下 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">main.o</span><span class="token punctuation">:</span> main.cpp functions.h
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -c main.cpp
+
+<span class="token target symbol">factorial.o</span><span class="token punctuation">:</span> factorial.cpp functions.h
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -c factorial.cpp
+
+<span class="token target symbol">hello.o</span><span class="token punctuation">:</span> hello.cpp functions.h
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -c hello.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以 main.o 为例，在依赖中写上如 functions.h 的意义在于。即使 main.cpp 文件没有修改，但是 functions.h 修改了，那么 <code>$(CC) -c main.cpp</code> 也会重新执行。如果目标依赖的文件都没有修改，那么执行 <code>make</code> 的时候就不会重新去运行其目标下的命令，即不会重复编译已经编译好的代码。</p>
+<h1 id="在-Makefile-中定义规则"><a href="#在-Makefile-中定义规则" class="headerlink" title="在 Makefile 中定义规则"></a>在 Makefile 中定义规则</h1><p>Makefile 目标规则的一般语法形式 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">target [target...]</span> <span class="token punctuation">:</span> [dependent ....]
+    [ command ...]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>括号内的参数是可选的，省略号表示一个或多个。注意每个命令前面的标签是必需的。</p>
+<p>下面给出一个简单的例子，您可以定义一个规则，使得 <code>make</code> 可以通过其他三个文件来达成目标 hello。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">hello</span><span class="token punctuation">:</span> main.o factorial.o hello.o
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> main.o factorial.o hello.o -o hello<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>**注 - **在这个例子中，你必须给出其他的规则来达成 main.o、factorial.o、hello.o 这三个目标。</p>
+<p>依赖项比目标更新，则<code>make</code>执行一次一个命令（在宏替换之后）。如果任何依赖已经被创建，那么首先发生，所以你有一个递归根据当前目标，寻找目标的依赖以及递归查找依赖的依赖。</p>
+<p>如果任何命令返回失败状态，则 <code>make</code>过程终止。这也是为什么你需要常备这种规则 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">clean</span><span class="token punctuation">:</span>
+    -rm *.o *~ core paper<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><code>make</code>忽略以短划线开头的命令返回状态。Em，我想你可以把<code>-</code>当做是 Makefile 的行注释。</p>
+<p><code>make</code>会输出宏替换之后的命令，来向你展示正在执行的情况。有时你可能想关闭它。例如 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">install</span><span class="token punctuation">:</span>
+    <span class="token operator">@</span>echo You must be root to install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>在 Makefiles 中有些约定俗成的目标，每次碰到 Makefile 你都可以先查看一下其中有没有。这些约定的目标分别是：all（直接 make 调用的入口目标），install 和 clean。</p>
+<ul>
+<li><p><strong>make all</strong> - (或者直接运行 make) 期望是：编译所有内容，以便在安装应用程序之前进行本地测试。</p>
+</li>
+<li><p><strong>make install</strong> - 这个目标通常期望为在适当的地方安装应用程序。但要注意事物安装在适合您系统的地方。</p>
+</li>
+<li><p>**make clean **- 清理应用程序，摆脱可执行文件，任何临时文件，目标文件等</p>
+</li>
+</ul>
+<h1 id="在-Makefile-中定义自定义后缀规则"><a href="#在-Makefile-中定义自定义后缀规则" class="headerlink" title="在 Makefile 中定义自定义后缀规则"></a>在 Makefile 中定义自定义后缀规则</h1><p>就其本身而言，<code>make</code>已知为了创建 .o文件，它必须在相应的 .c 文件上使用 cc -c。这些规则是内置的，你可以利用他们的优势来缩短你的 Makefile。如果只在 Makefile 的依赖行中指出当前目标所依赖的.h文件，将知道相应的.c文件已经是必需的。你甚至不需要包含编译器的命令。</p>
+<p>这进一步减少了 Makefile，如图所示 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">OBJECTS <span class="token operator">=</span> main.o hello.o factorial.o
+<span class="token target symbol">hello</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>OBJECTS<span class="token punctuation">)</span>
+        cc <span class="token variable">$</span><span class="token punctuation">(</span>OBJECTS<span class="token punctuation">)</span> -o hello
+<span class="token target symbol">hellp.o</span><span class="token punctuation">:</span> functions.h
+<span class="token target symbol">main.o</span><span class="token punctuation">:</span> functions.h 
+<span class="token target symbol">factorial.o</span><span class="token punctuation">:</span> functions.h <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>make</code> 使用名为 .SUFFIXES 的特殊目标来允许您定义自己的后缀。例如  -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token builtin-target builtin">.SUFFIXES</span><span class="token punctuation">:</span> .foo .bar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>它通知<code>make</code>你将使用这些特殊的后缀来制定你自己的规则。</p>
+<p>与<code>make</code>已知如何从 .c 文件创建 .o 文件类似，您可以按以下方式定义规则 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">.foo.bar</span><span class="token punctuation">:</span>
+        tr <span class="token string">'[A-Z][a-z]'</span> <span class="token string">'[N-Z][A-M][n-z][a-m]'</span> &lt; <span class="token variable">$&lt;</span> &gt; <span class="token variable">$@</span>
+<span class="token target symbol">.c.o</span><span class="token punctuation">:</span>
+        <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> -c <span class="token variable">$&lt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>第一条规则允许你从 .foo 文件创建一个 .bar 文件。（它基本上是对文件进行加密）。</p>
+<p>第二个规则是从 .c 文件创建 .o 文件时 <code>make</code> 使用的默认规则。</p>
+<h1 id="Makefile-指令"><a href="#Makefile-指令" class="headerlink" title="Makefile - 指令"></a>Makefile - 指令</h1><p>有许多可用于各种形式的指令（Directives）。你系统上的<code>make</code>程序可能不支持所有的指令。所以请检查你的<code>make</code>是否支持我们在这里解释的指令。本教程中的指令均源自 GNU<code>make</code>。</p>
+<h2 id="条件指令"><a href="#条件指令" class="headerlink" title="条件指令"></a>条件指令</h2><p>条件指令是 -</p>
+<ul>
+<li><p>**ifeq **（if eqaul）指令。它包含两个参数，用逗号分隔并用圆括号包围。变量替换在两个参数上执行，然后进行比较。如果两个参数匹配，则遵循 ifeq 后面的命令行；否则会被忽略。</p>
+</li>
+<li><p>**ifneq **（if not eqaul）指令。它包含两个参数，用逗号分隔并用圆括号包围。变量替换在两个参数上执行，然后进行比较。如果两个参数不匹配，则遵循ifneq后面的makefile行;否则会被忽略。</p>
+</li>
+<li><p>**ifdef **（if defined）指令。它包含单个参数。如果给定的参数为真，则条件成立。</p>
+</li>
+<li><p>**ifndef **（if not defined）指令。它包含单个参数。如果给定的参数为假，则条件成立。</p>
+</li>
+<li><p>**else **指令导致如果之前的条件没有被遵守以下行。在上面的例子中，这意味着每当没有使用第一个替代方案时，就会使用第二个替代链接命令。在条件中有其他选项是可选的。</p>
+</li>
+<li><p>**endif **指令结束的语句，每个 if 条件必须以 endif 结尾。</p>
+</li>
+</ul>
+<h3 id="条件指令的语法"><a href="#条件指令的语法" class="headerlink" title="条件指令的语法"></a>条件指令的语法</h3><p>最简单条件的语法如下 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">conditional-directive
+   text-if-true
+<span class="token keyword">endif</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>text-if-true 可以是任何文本行，如果条件为真，则被视为 Makefile 的一部分。如果条件假，则不使用该内容。</p>
+<p>复杂一点条件的语法如下 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">conditional-directive
+   text-if-true
+<span class="token keyword">else</span>
+   text-if-false
+<span class="token keyword">endif</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果条件为真，则使用 text-if-true; 否则，使用 text-if-false。text-if-false 可以是任意数量的文本行。</p>
+<p>无论条件简单还是复杂，条件指令的语法都是相同的。有四种不同的指令来测试各种条件。他们如同给出的 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token keyword">ifeq</span> <span class="token punctuation">(</span>arg1, arg2<span class="token punctuation">)</span>
+<span class="token keyword">ifeq</span> <span class="token string">'arg1'</span> <span class="token string">'arg2'</span>
+<span class="token keyword">ifeq</span> <span class="token string">"arg1"</span> <span class="token string">"arg2"</span>
+<span class="token keyword">ifeq</span> <span class="token string">"arg1"</span> <span class="token string">'arg2'</span>
+<span class="token keyword">ifeq</span> <span class="token string">'arg1'</span> <span class="token string">"arg2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以上条件的相反指令如下 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token keyword">ifneq</span> <span class="token punctuation">(</span>arg1, arg2<span class="token punctuation">)</span>
+<span class="token keyword">ifneq</span> <span class="token string">'arg1'</span> <span class="token string">'arg2'</span>
+<span class="token keyword">ifneq</span> <span class="token string">"arg1"</span> <span class="token string">"arg2"</span>
+<span class="token keyword">ifneq</span> <span class="token string">"arg1"</span> <span class="token string">'arg2'</span>
+<span class="token keyword">ifneq</span> <span class="token string">'arg1'</span> <span class="token string">"arg2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="条件指令示例"><a href="#条件指令示例" class="headerlink" title="条件指令示例"></a>条件指令示例</h3><pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">libs_for_gcc <span class="token operator">=</span> -lgnu
+normal_libs <span class="token operator">=</span>
+
+<span class="token target symbol">foo</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>objects<span class="token punctuation">)</span>
+<span class="token keyword">ifeq</span> <span class="token punctuation">(</span><span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> ,gcc<span class="token punctuation">)</span>
+        <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -o foo <span class="token variable">$</span><span class="token punctuation">(</span>objects<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>libs_for_gcc<span class="token punctuation">)</span>
+<span class="token keyword">else</span>
+        <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -o foo <span class="token variable">$</span><span class="token punctuation">(</span>objects<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>normal_libs<span class="token punctuation">)</span>
+<span class="token keyword">endif</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="include-指令"><a href="#include-指令" class="headerlink" title="include 指令"></a>include 指令</h2><p>include 指令指示<code>make</code>在执行的过程中读取一个或多个其他 Makefile 到当前 Makefile。该指令是 Makefile 中的一行，看起来如下所示 -</p>
+<pre class="line-numbers language-none"><code class="language-none">include filenames...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>文件名可以包含 shell 格式的文件名匹配。额外的空格是允许的，并且在行的开始处被忽略，但不允许使用制表符（\t）。例如，如果你有三个 `.mk’ 文件，即 `a.mk’，`b.mk’ 和 `c.mk’，以及 $(bar)，那么它将扩展到 bish bash，然后如下所示表达。</p>
+<pre class="line-numbers language-none"><code class="language-none">include foo *.mk $(bar)
+
+等同于 −
+
+include foo a.mk b.mk c.mk bish bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>当<code>make</code>处理一个 include 指令时，它会暂停并依次读取每个列出的文件到当前 Makefile。完成后，<code>make</code>继续读取执行当前的Makefile。</p>
+<h2 id="override-指令"><a href="#override-指令" class="headerlink" title="override 指令"></a>override 指令</h2><p>如果一个变量已经设置了一个命令参数，那么 makefile 中的普通赋值就会被忽略。如果你想在 makefile 中继续修改变量，即使它是用一个命令参数设置的。那么你可以使用一个 override 指令，它是一条看起来如下所示的行：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token keyword">override</span> variable <span class="token operator">=</span> value
+
+或者
+
+<span class="token keyword">override</span> variable <span class="token operator">:=</span> value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="Makefile-重新编译"><a href="#Makefile-重新编译" class="headerlink" title="Makefile - 重新编译"></a>Makefile - 重新编译</h1><p>实际上<code>make</code>是一个智能的工具，它可以基于你在源文件中所做的更改而选择性的生效。如果你有四个文件 main.cpp、hello.cpp、factorial.cpp 和 functions.h，那么（由于顺序的原因）所有其余文件都依赖于 functions.h，而 main.cpp 依赖于 hello.cpp 和 factorial.cpp。因此，如果您在 functions.h 中进行了任何更改，则<code>make</code>会重新编译所有源文件以生成新的目标文件。但是，如果您在 main.cpp 中进行任何更改，因为它不被任何其他文件依赖，所以只会重新编译 main.cpp 文件，而 help.cpp 和 factorial.cpp 则不会。</p>
+<p>其原理为，编译文件时<code>make</code>检查其目标文件并比较文件的更新时间戳。如果源文件比目标文件具有更新的时间戳，则假定源文件已更改，那么 make 会生成新的目标文件。</p>
+<h2 id="避免反复编译"><a href="#避免反复编译" class="headerlink" title="避免反复编译"></a>避免反复编译</h2><p>可能有一个由数千个文件组成的项目。有时您可能更改了源文件，但您可能不想让所有依赖它的文件重新编译。例如，假设你添加一个宏或一个声明到其他文件所依赖的头文件中。通常<code>make</code>会保守地假定头文件中的任何变化都需要重新编译所有依赖于它文件，不过有时候你可能知道它们不需要重新编译，也不想浪费时间等待它们编译。</p>
+<p>当你在更改头文件之前预见了该问题，则可以使用 “-t” 标志。该标志告诉<code>make</code>不用运行目标规则中的命令，而是通过修改目标文件的最后修改日期来标记它是最新的。你需要遵循这几个过程 -</p>
+<ul>
+<li><p>使用 “make” 命令重新编译真正需要重新编译的源文件。</p>
+</li>
+<li><p>在头文件中进行更改。</p>
+</li>
+<li><p>使用命令 `make -t’ 将所有对象文件标记为最新。下一次运行 make 时，头文件中的更改不会导致任何反复编译。</p>
+</li>
+</ul>
+<p>如果你在某些文件需要重新编译时更改了头文件，那么再做这个操作就晚了（因为有需要编译的，不能全部重置，那么就需要全部重新编译了）。相反，你可以使用 `-o文件’ 标志，该标志将指定的文件标记为“旧”。这意味着，（相关的目标）文件本身不会被重新（编译）制作（目标文件），并且其他任何内容都不会在其（递归的）依赖链上重新（编译）制作（目标文件）。你需要遵循以下过程来实现该效果 -</p>
+<ul>
+<li><p>想要重新编译特定的源文件，其依赖于特定头文件修改的情况，可以使用 `make -o header file’。如果涉及到多个头文件，则为每个头文件前使用单独 “-o” 选项。</p>
+</li>
+<li><p>通过 `make -t’ 更新所有的目标文件。</p>
+</li>
+</ul>
+<h2 id="Makefile-隐藏规则"><a href="#Makefile-隐藏规则" class="headerlink" title="Makefile 隐藏规则"></a>Makefile 隐藏规则</h2><p>这个命令应该可以在所有情况下使用，适用于我们从源文件 x.cpp 中构建可执行文件 x 作为输出，所以可以说是一个隐含的规则 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">.cpp</span><span class="token punctuation">:</span>
+    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> <span class="token variable">$@.cpp</span> <span class="token variable">$</span><span class="token punctuation">(</span>LDFLAGS<span class="token punctuation">)</span> -o <span class="token variable">$@</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这个隐藏规则说明如何通过 x.c 生成 x - 对 x.c 运行 cc 并调用输出 x。该规则是隐含的，因为没有提到特定的目标。它可以用于所有情况。</p>
+<p>另一个常见的隐含规则是用 .cpp（源文件）构建 .o（对象）文件。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">.cpp.o</span><span class="token punctuation">:</span>
+        <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> -c <span class="token variable">$&lt;</span>
+
+或者 -
+
+<span class="token target symbol">.cpp.o</span><span class="token punctuation">:</span>
+        <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> -c <span class="token variable">$*.cpp</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="Makefile-其他特性"><a href="#Makefile-其他特性" class="headerlink" title="Makefile - 其他特性"></a>Makefile - 其他特性</h1><h2 id="递归使用-make"><a href="#递归使用-make" class="headerlink" title="递归使用 make"></a>递归使用 make</h2><p>递归使用 <code>make</code> 的方式即在 Makefile 中将 <code>make</code> 用作命令。这个用法的主要用途是将一个大系统的拆成多个子系统i组合编译时。比如说，你有一个名为 `subdir’ 的子目录，它有自己的 Makefile，并且您希望在包含 Makefile 的子目录上运行 make。那么可以通过这个来做到这一点 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">subsystem</span><span class="token punctuation">:</span>
+        cd subdir &amp;&amp; <span class="token variable">$</span><span class="token punctuation">(</span>MAKE<span class="token punctuation">)</span>
+
+或者，等效的 −
+
+<span class="token target symbol">subsystem</span><span class="token punctuation">:</span>
+        <span class="token variable">$</span><span class="token punctuation">(</span>MAKE<span class="token punctuation">)</span> -C subdir<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>你可以基于这个例子来编写递归<code>make</code>命令，但是你需要知道它们（每个子系统的 Makefile）是如何工作的、为什么它能工作，以及子 make 如何与顶层 make 相关联。</p>
+<h2 id="将变量传达给子-make"><a href="#将变量传达给子-make" class="headerlink" title="将变量传达给子 make"></a>将变量传达给子 make</h2><p><code>make</code>通过明确的请求可以将顶层 make 的变量值传递给子 make 的环境。这些变量在子 make 中被定义为默认值。你不能重写被子 make 的 Makefile 所使用的变量（除非你执行的时候使用`-e’ 开关）。</p>
+<p>为了传递或导出变量，<code>make</code>会将该变量和它的值添加到每个运行命令的环境中。而子 make 会顺序的根据环境来初始化它的变量表。</p>
+<p>特殊变量 SHELL 和 MAKEFLAGS 总是被导出（除非你明确的阻止）。只要设置了 MAKEFILES 的内容，它就会被导出。</p>
+<p>如果您想要将指定变量导出到子 make 中，请使用 <strong>export</strong> 指令，如图所示 -</p>
+<pre class="line-numbers language-none"><code class="language-none">export variable ...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果您想阻止变量被导出，请使用 <strong>unexport</strong> 指令，如图所示 -</p>
+<pre class="line-numbers language-none"><code class="language-none">unexport variable ...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="变量-MAKEFILES"><a href="#变量-MAKEFILES" class="headerlink" title="变量 MAKEFILES"></a>变量 MAKEFILES</h2><p>如果定义了环境变量MAKEFILES，则将<code>make</code>其值视为其他makefile的名称列表（以空格分隔），以便在其他makefile之前读取。这与include指令非常相似：搜索各种目录以查找这些文件。</p>
+<p>MAKEFILES的主要用途是在递归调用之间进行通信<code>make</code>。</p>
+<h2 id="引入不同目录的头文件"><a href="#引入不同目录的头文件" class="headerlink" title="引入不同目录的头文件"></a>引入不同目录的头文件</h2><p>如果你将头文件放在不同的目录中并且在在不同的目录中运行<code>make</code>，则需要提供头文件的路径。这可以在 Makefile 中使用 **-I **选项完成。假设 functions.h 文件在 <code>/home/tutorialspoint/</code>  头文件夹中可用，其余文件在 <code>/home/tutorialspoint/src/</code> 文件夹中可用，则 Makefile 可以按如下方式编写：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">INCLUDES <span class="token operator">=</span> -I <span class="token string">"/home/tutorialspoint/header"</span>
+CC <span class="token operator">=</span> gcc
+LIBS <span class="token operator">=</span>  -lm
+CFLAGS <span class="token operator">=</span> -g -Wall
+OBJ <span class="token operator">=</span>  main.o factorial.o hello.o
+
+<span class="token target symbol">hello</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">{</span>OBJ<span class="token punctuation">}</span>
+   <span class="token variable">$</span><span class="token punctuation">{</span>CC<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>CFLAGS<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>INCLUDES<span class="token punctuation">}</span> -o <span class="token variable">$@</span> <span class="token variable">$</span><span class="token punctuation">{</span>OBJS<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>LIBS<span class="token punctuation">}</span>
+<span class="token target symbol">.cpp.o</span><span class="token punctuation">:</span>
+   <span class="token variable">$</span><span class="token punctuation">{</span>CC<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>CFLAGS<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>INCLUDES<span class="token punctuation">}</span> -c <span class="token variable">$&lt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="将更多文本附加到变量"><a href="#将更多文本附加到变量" class="headerlink" title="将更多文本附加到变量"></a>将更多文本附加到变量</h2><p>对已经定义的变量的值添加更多文本通常很有用。你可以用 `+=’  来做到这一点，如下所示：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">objects <span class="token operator">+=</span> another.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>它采用变量对象的值，并向其添加文本 “another.o”（前面有一个空格）。因此 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">objects <span class="token operator">=</span> main.o hello.o factorial.o
+objects <span class="token operator">+=</span> another.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>将对象设置为`main.o hello.o factorial.o another.o’。</p>
+<p>使用 ‘+=’ 类似于：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">objects <span class="token operator">=</span> main.o hello.o factorial.o
+objects <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span>objects<span class="token punctuation">)</span> another.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="Makefile-中的多行写法"><a href="#Makefile-中的多行写法" class="headerlink" title="Makefile 中的多行写法"></a>Makefile 中的多行写法</h2><p>如果你觉得 Makefile 中某一行太长，那么你可以使用反斜线 “\” 来分隔你的行，如下所示 -</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">OBJ <span class="token operator">=</span>  main.o factorial.o \
+    hello.o
+
+
+等同于
+
+
+OBJ <span class="token operator">=</span>  main.o factorial.o hello.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Makefile-别名"><a href="#Makefile-别名" class="headerlink" title="Makefile 别名"></a>Makefile 别名</h2><p>如果本地目录中已经有了名称为“Makefile” 的 Makefile，那么只需在命令行下输入 make 回车它就会运行 Makefile 文件。但是，如果你的 Makefile 是其他名字，可以使用以下命令来运行 -</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token parameter variable">-f</span> your-makefile-name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="Makefile-例子"><a href="#Makefile-例子" class="headerlink" title="Makefile - 例子"></a>Makefile - 例子</h1><p>这是用于编译 hello 程序的 Makefile 的一个完整例子。该程序由三个文件 main.cpp、factorial.cpp 和 hello.cpp 组成。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token comment"># 定义需要的宏</span>
+SHELL <span class="token operator">=</span> /bin/sh
+
+OBJS <span class="token operator">=</span>  main.o factorial.o hello.o
+CFLAG <span class="token operator">=</span> -Wall -g
+CC <span class="token operator">=</span> gcc
+INCLUDE <span class="token operator">=</span>
+LIBS <span class="token operator">=</span> -lm
+
+<span class="token target symbol">hello</span><span class="token punctuation">:</span><span class="token variable">$</span><span class="token punctuation">{</span>OBJ<span class="token punctuation">}</span>
+   <span class="token variable">$</span><span class="token punctuation">{</span>CC<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>CFLAGS<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>INCLUDES<span class="token punctuation">}</span> -o <span class="token variable">$@</span> <span class="token variable">$</span><span class="token punctuation">{</span>OBJS<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>LIBS<span class="token punctuation">}</span>
+
+<span class="token target symbol">clean</span><span class="token punctuation">:</span>
+   -rm -f *.o core *.core
+
+<span class="token target symbol">.cpp.o</span><span class="token punctuation">:</span>
+   <span class="token variable">$</span><span class="token punctuation">{</span>CC<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>CFLAGS<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>INCLUDES<span class="token punctuation">}</span> -c <span class="token variable">$&lt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>现在，你可以使用<code>make</code>来构建的你的程序 <strong>hello</strong> 。如果运行<code>make clean</code>则会删除当前目录中所有的 .o 文件和 .core 文件。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">一只不停游泳的鱼儿</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://luxihua.space/blog/d52a1661.html">http://luxihua.space/blog/d52a1661.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/make/">
+                                    <span class="chip bg-color">make</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 't7fHma85zB34TKeJjc64jsGe-gzGzoHsz',
+        appKey: '5q4uaKjj8GE1wA3NxhVdl4f3',
+        serverURLs: 'https://t7fhma85.lc-cn-n1-shared.com',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'wavatar',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '如果你没有GitHub账号,还可以在这里评论啦!'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/blog/xccatknt.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/129.jpeg" class="responsive-img" alt="第48课：Python程序接入MySQL数据库">
+                        
+                        <span class="card-title">第48课：Python程序接入MySQL数据库</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要记录第48课：Python程序接入MySQL数据库
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python-Core-50-Courses/">
+                        <span class="chip bg-color">Python-Core-50-Courses</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/1ba862a3.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/222.jpeg" class="responsive-img" alt="Makefile-Tutorial-zh-CN">
+                        
+                        <span class="card-title">Makefile-Tutorial-zh-CN</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/make/">
+                        <span class="chip bg-color">make</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('6'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+                <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                            <span id="year">2023-2024</span>
+                            
+                                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery"
+                                        target="_blank">Matery</a>
+                                    
+                                            <br>
+                                            
+                                                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">
+                                                        193.6k
+                                                    </span>
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_pv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                                                                                    <span id="busuanzi_value_site_pv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                
+                                                                                    <span
+                                                                                        id="busuanzi_container_site_uv">
+                                                                                        &nbsp;|&nbsp;<i
+                                                                                            class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                                                                                            <span
+                                                                                                id="busuanzi_value_site_uv"
+                                                                                                class="white-color"></span>
+                                                                                    </span>
+                                                                                    
+                                                                                        <br>
+
+                                                                                        <!-- 运行天数提醒. -->
+                                                                                        
+                                                                                            <span id="sitetime"> Loading
+                                                                                                ...</span>
+                                                                                            <script>
+                                                                                                var calcSiteTime = function () {
+                                                                                                    var seconds = 1000;
+                                                                                                    var minutes = seconds * 60;
+                                                                                                    var hours = minutes * 60;
+                                                                                                    var days = hours * 24;
+                                                                                                    var years = days * 365;
+                                                                                                    var today = new Date();
+                                                                                                    var startYear = "2023";
+                                                                                                    var startMonth = "2";
+                                                                                                    var startDate = "21";
+                                                                                                    var startHour = "0";
+                                                                                                    var startMinute = "0";
+                                                                                                    var startSecond = "0";
+                                                                                                    var todayYear = today.getFullYear();
+                                                                                                    var todayMonth = today.getMonth() + 1;
+                                                                                                    var todayDate = today.getDate();
+                                                                                                    var todayHour = today.getHours();
+                                                                                                    var todayMinute = today.getMinutes();
+                                                                                                    var todaySecond = today.getSeconds();
+                                                                                                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                                    var diff = t2 - t1;
+                                                                                                    var diffYears = Math.floor(diff / years);
+                                                                                                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                                    // 区分是否有年份.
+                                                                                                    var language = 'zh-CN';
+                                                                                                    if (startYear === String(todayYear)) {
+                                                                                                        document.getElementById("year").innerHTML = todayYear;
+                                                                                                        var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                                    } else {
+                                                                                                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                        var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                            + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                                    }
+                                                                                                }
+
+                                                                                                calcSiteTime();
+                                                                                            </script>
+                                                                                            
+                                                                                                <br>
+                                                                                                
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lxh2010100" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1131729094@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://www.facebook.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+
+
+    <a href="https://twitter.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com/" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+                    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+                        <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+                            <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+                                <script
+                                    src="/libs/materialize/materialize.min.js"></script>
+                                <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+                                <script src="/libs/aos/aos.js"></script>
+                                <script
+                                    src="/libs/scrollprogress/scrollProgress.min.js"></script>
+                                <script
+                                    src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+                                <script src="/js/matery.js"></script>
+
+                                
+
+                                        
+
+                                                
+
+                                                        <!-- 雪花特效 -->
+                                                        
+                                                            <script type="text/javascript">
+                                                                // 只在桌面版网页启用特效
+                                                                var windowWidth = $(window).width();
+                                                                if (windowWidth > 768) {
+                                                                    document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+                                                                }
+                                                            </script>
+                                                            
+
+                                                                <!-- 鼠标星星特效 -->
+                                                                
+
+                                                                        
+                                                                            <script
+                                                                                src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+                                                                            <script
+                                                                                src="/libs/others/TencentCaptcha.js"></script>
+                                                                            <button id="TencentCaptcha"
+                                                                                data-appid="xxxxxxxxxx"
+                                                                                data-cbfn="callback" type="button"
+                                                                                hidden></button>
+                                                                            
+
+                                                                                <!-- Baidu Analytics -->
+
+                                                                                    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+                                                                                        
+                                                                                                
+                                                                                                    <script async
+                                                                                                        src="/libs/others/busuanzi.pure.mini.js"></script>
+                                                                                                    
+
+                                                                                                        
+
+                                                                                                                
+
+                                                                                                                        <!--腾讯兔小巢-->
+                                                                                                                        
+                                                                                                                                
+                                                                                                                                    <script
+                                                                                                                                        type="text/javascript"
+                                                                                                                                        color="0,0,255"
+                                                                                                                                        pointColor="0,0,255"
+                                                                                                                                        opacity='0.7'
+                                                                                                                                        zIndex="-1"
+                                                                                                                                        count="99"
+                                                                                                                                        src="/libs/background/canvas-nest.js"></script>
+                                                                                                                                    
+
+                                                                                                                                        
+
+                                                                                                                                                    
+                                                                                                                                                        <script
+                                                                                                                                                            type="text/javascript"
+                                                                                                                                                            src="/libs/background/ribbon-dynamic.js"
+                                                                                                                                                            async="async"></script>
+                                                                                                                                                        
+
+                                                                                                                                                            
+                                                                                                                                                                <script
+                                                                                                                                                                    src="/libs/instantpage/instantpage.js"
+                                                                                                                                                                    type="module"></script>
+                                                                                                                                                                
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+
+</html>

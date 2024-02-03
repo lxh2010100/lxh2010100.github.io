@@ -1,0 +1,2408 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Markdown语法和Typora编辑器使用, 永远在路上">
+    <meta name="description" content="本文主要记录markdown语法和typora编辑器的使用">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Markdown语法和Typora编辑器使用 | 华仔の小站</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="华仔の小站" type="application/atom+xml">
+</head>
+
+
+    <body>
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.jpeg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">华仔の小站</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/books" class="waves-effect waves-light">
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>书籍</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle-o" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-chain" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.jpeg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">华仔の小站</div>
+        <div class="logo-desc">
+            
+            从来没有真正的绝境，只有心灵的迷途
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/books" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-book"></i>
+			
+			书籍
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-chain"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+            
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/174.jpeg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Markdown语法和Typora编辑器使用</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Typora/">
+                                <span class="chip bg-color">Typora</span>
+                            </a>
+                        
+                            <a href="/tags/Markdown/">
+                                <span class="chip bg-color">Markdown</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Markdown/" class="post-category">
+                                Markdown
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-02-22
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-02-03
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    24 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism-atom-dark.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-Markdown历史"><a href="#1-Markdown历史" class="headerlink" title="1. Markdown历史"></a>1. Markdown历史</h1><p>在日常工作和互联网写作中, Markdown几乎随处可见,并且扮演着越来越重要的角色。不管你是不是程序员,只要关乎写作,都离不开 Markdown。知乎、简书、CSDN、 GitHub、 WordPress印象笔记、有道笔记等都支持 Markdown, Markdown俨然已成为最流行的“写作语言”。</p>
+<p>据 GitHub Flavored Markdown(GFM)官方文档介绍, Markdown是由约翰·格鲁伯( John Gruber)在亚伦·斯沃茨( Aaron Swartz)的帮助下开发,并在2004年发布的标记语言。</p>
+<p>其设计灵感主要来源于纯文本电子邮件的格式,目标是让人们能够使用易读、易写的纯文本格式编写文档,而且这些文档可以转换为HTML( Hyper Text MarkupLanguage,超文本标记语言)文档。</p>
+<p>起初 Markdown主要用于网络写作,后来人们希望 Markdown能够应用到更多的领域,如写书、记笔记、写文档、写幻灯片等。<br>由于 Markdown本身功能有限,一些特定的需求和场景无法被满足,因此产生了许多扩展语法,这些语法在基础语法之上新增了如表格、任务列表、围栏代码块等功能。</p>
+<h2 id="1-1-Markdown演进史"><a href="#1-1-Markdown演进史" class="headerlink" title="1.1  Markdown演进史"></a>1.1  Markdown演进史</h2><ul>
+<li>2006年, Pandoc’s Markdown发布,作者是 John MacFarlane此版本对 Markdown语法有额外的扩充和些许修正,这使 Markdown可以转换为更多的文件格式, Pando堪称文件转换领域的“瑞士军刀”</li>
+<li>2011年, MultiMarkdown(简称MMD)发布,作者是 Fletcher T. Penney此版本让 Markdown可以转换为更多的文件格式,包括HTML/ XHTML、OpenDocument, OPML( Outline Processor Markup Language,大纲处理标记语言)</li>
+<li>2013年, Markdown Extra发布,作者是 Michel fortin。此版本最初使用PHP语言实现,新增了围栏代码块、具有 id/class属性的元素、表格、任务列表、脚注、缩写等功能。</li>
+<li>2014年, Common Mark规范发布,主要作者是 Jeff Atwood和JohrMacFarlaneCommonAl旨在为人们提供一个标准的 Markdown语法规范和参考实现。Markdown标准化工作开始于2012年,2014年9月,由于 John Gruber反对在这一工作中继续使用“ Markdown”这个名字,其被更名为 Common Mark</li>
+<li>2017年, GitHub发布了 GitHub Flavored Markdown,即GFM此版本遵循 CommonMark规范,新增了围栏代码块、表格、删除线、自动接、 Emoji表情和任务列表等功能,是目前使用最广泛的版本。</li>
+</ul>
+<h2 id="1-2-标准语法-Common-Mark"><a href="#1-2-标准语法-Common-Mark" class="headerlink" title="1.2 标准语法 Common Mark"></a>1.2 标准语法 Common Mark</h2><p>由于不同版本的扩展语法太多, John Gruber对 Markdown语法也没有指定明确的规范,在非正式规范中也存在一些含糊不清的地方,一些扩展语法慢慢偏离了最初的参考实现方式。另外,用户的写作习惯和编辑器的解析规则也不尽相同,这就导致 Markdown文本在不同编辑器上解析时可能会出现一些问题。</p>
+<p>这些问题促使一些机构和开发人员努力对 Markdown语法进行标准化CommonMark(<a target="_blank" rel="noopener" href="http://commonmark.org/)%E5%B0%B1%E6%98%AF%E8%BF%99%E6%A0%B7%E4%B8%80%E4%B8%AA%E4%BA%A7%E7%89%A9%E3%80%82%E5%AE%83%E4%B8%BA">http://commonmark.org/)就是这样一个产物。它为</a> Markdown t提出了一个标准的、明确的语法规范,以及一套全面的测试,根据此规范可以验证Markdown的实现结果, GitHub Flavored Markdown(GFM)遵循的就是CommonMark规范</p>
+<h2 id="1-3-最流行的扩展语法CFM"><a href="#1-3-最流行的扩展语法CFM" class="headerlink" title="1.3 最流行的扩展语法CFM"></a>1.3 最流行的扩展语法CFM</h2><p>目前最流行的扩展语法是 GitHub Flavored Markdown,简称GFM,毕竟Github是全球最大的程序员“交友”网站.</p>
+<h1 id="2-Markdown使用场景"><a href="#2-Markdown使用场景" class="headerlink" title="2. Markdown使用场景"></a>2. Markdown使用场景</h1><p>当你对文章的排版没什么特殊需求,且不想花太多时间在排版上时,就可以使用 Markdown。因为编辑器或平台会通过 Markdown标记对文章进行渲染,最终的版效果会非常简洁、漂亮。众多“专职”的 Markdown编辑器(如 Typora、熊掌记、 Ulysses)也提供了对 Markdown的支持。</p>
+<p>Markdown并不是万能的,它只适用于对排版要求不高的场景,如果你对字号段落、图片、表格等方面的排版要求较高,还是需要使用Word这类专业的编辑软件的。<br>小提示: Markdown文件可以很方便地转换为Word文件,如果有一些需要特殊处理的格式,可以两者结合使用。</p>
+<h1 id="3-Markdown使用流程"><a href="#3-Markdown使用流程" class="headerlink" title="3. Markdown使用流程"></a>3. Markdown使用流程</h1><p>Markdown的工作流程很简单,首先要挑一款好用的编辑器进行写作,内容使用 Markdown进行标记,然后通过编辑器的功能将文章进行渲染、发布或导出。<br>所以如果想让 Markdown发挥最大的作用,语法和编辑器都是要好好学习的。</p>
+<h2 id="3-1-语法学习"><a href="#3-1-语法学习" class="headerlink" title="3.1 语法学习"></a>3.1 语法学习</h2><ol>
+<li>学习基础语法<br>Markdown的基础语法是指 John Gruber最初发布的 Markdown版本,大多扩展语法都是基于此版本开发的,因此基础语法是需要学会的。</li>
+<li>学习扩展语法<br>在众多扩展语法中,GEM无疑是目前最流行的。它扩展了包括表格、任务列表、删除线、围栏代码、Emoj等在内的语法,功能非常全面,是笔者重点推荐学习的扩展语法。</li>
+<li>学习写作规范<br>人们在使用 Markdown的过程中逐渐总结出了一些最佳实践方案,并且制定了写作规范,学习这些规范可以让我们养成良好的写作习惯,避免重复“踩坑”。另外,遵循这些规范也可以让源码(没有渲染过的文本)有更强的可读性、可移植性(一处编写,随处使用)和可维护性(有统一的认知)。</li>
+</ol>
+<h2 id="3-2-编辑器简介"><a href="#3-2-编辑器简介" class="headerlink" title="3.2 编辑器简介"></a>3.2 编辑器简介</h2><p>正所谓“好马配好鞍”,好的编辑工具可以让写作事半功倍。在市面上也有很多流行的 Markdown编辑器,免费的、收费的都有,可谓各有千秋。本文挑选了比较有代表性的工具Typora来介绍。</p>
+<p>比较流行的Markdown编辑器列表</p>
+<table>
+<thead>
+<tr>
+<th align="center">编辑器</th>
+<th align="center">Markdown语法</th>
+<th align="center">跨平台</th>
+<th align="center">移动端</th>
+<th align="center">免费</th>
+<th align="center">推荐指数</th>
+<th align="center">适宜人群</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Typora</td>
+<td align="center">GFM</td>
+<td align="center">✔️</td>
+<td align="center">❎</td>
+<td align="center">✔️</td>
+<td align="center">⭐⭐⭐⭐⭐</td>
+<td align="center">所有人</td>
+</tr>
+<tr>
+<td align="center">VS Code</td>
+<td align="center">GFM</td>
+<td align="center">✔️</td>
+<td align="center">❎</td>
+<td align="center">✔️</td>
+<td align="center">⭐⭐⭐⭐⭐</td>
+<td align="center">技术写作人员</td>
+</tr>
+<tr>
+<td align="center">Gitbook</td>
+<td align="center">GFM</td>
+<td align="center">✔️</td>
+<td align="center">❎</td>
+<td align="center">✔️</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">热爱开源的人</td>
+</tr>
+<tr>
+<td align="center">印象笔记</td>
+<td align="center">GFM</td>
+<td align="center">✔️</td>
+<td align="center">❎</td>
+<td align="center">✔️(内购)</td>
+<td align="center">⭐⭐⭐⭐⭐</td>
+<td align="center">印象笔记用户</td>
+</tr>
+<tr>
+<td align="center">有道笔记</td>
+<td align="center">GFM</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">✔️(内购)</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">有道笔记用户</td>
+</tr>
+<tr>
+<td align="center">熊掌记</td>
+<td align="center">简化并兼容标准语法</td>
+<td align="center">❎(macOS)</td>
+<td align="center">✔️(iOS)</td>
+<td align="center">✔️(内购)</td>
+<td align="center">⭐⭐⭐⭐⭐</td>
+<td align="center">文艺青年</td>
+</tr>
+<tr>
+<td align="center">Ulysses</td>
+<td align="center">GFM</td>
+<td align="center">❎(macOS)</td>
+<td align="center">✔️(iOS)</td>
+<td align="center">❎</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">重度文字工作者</td>
+</tr>
+<tr>
+<td align="center">MWeb</td>
+<td align="center">GFM</td>
+<td align="center">❎(macOS)</td>
+<td align="center">✔️(iOS)</td>
+<td align="center">❎</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">技术写作人员</td>
+</tr>
+<tr>
+<td align="center">MarkdownPad</td>
+<td align="center">GFM</td>
+<td align="center">❎(Windows)</td>
+<td align="center">❎</td>
+<td align="center">✔️(内购)</td>
+<td align="center">⭐⭐⭐</td>
+<td align="center">Windows用户</td>
+</tr>
+<tr>
+<td align="center">CMD Markdown</td>
+<td align="center">GFM</td>
+<td align="center">✔️</td>
+<td align="center">❎</td>
+<td align="center">✔️(内购)</td>
+<td align="center">⭐⭐⭐⭐⭐</td>
+<td align="center">所有人</td>
+</tr>
+</tbody></table>
+<p>本文示例演示使用的是Typora + VS Code。</p>
+<h1 id="4-MarkDown语法"><a href="#4-MarkDown语法" class="headerlink" title="4. MarkDown语法"></a>4. MarkDown语法</h1><h2 id="4-1-基础语法"><a href="#4-1-基础语法" class="headerlink" title="4.1 基础语法"></a>4.1 基础语法</h2><h3 id="4-1-1-字体"><a href="#4-1-1-字体" class="headerlink" title="4.1.1 字体"></a>4.1.1 字体</h3><h4 id="4-1-1-1-标题"><a href="#4-1-1-1-标题" class="headerlink" title="4.1.1.1 标题"></a>4.1.1.1 标题</h4><ul>
+<li>使用# 语法表示标题</li>
+</ul>
+<p><code># + 空格 + 标题内容</code></p>
+<ul>
+<li><p>语法说明</p>
+<ol>
+<li><p>在行首插入#可标记出标题</p>
+</li>
+<li><p>#的个数表示标题等级</p>
+</li>
+<li><p>建议在#之后加一个空格</p>
+</li>
+<li><p>Markdown最多支持六级标题</p>
+</li>
+</ol>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<p><img src="/images/typora/c5257c96bdccfaa71a55c938765be20b.png" alt="image-20210602233706829"></p>
+<p>建议标题写在一行的开头，结尾不要有空格和标点符号，如句号，都好，冒号，分号等。</p>
+<p>建议标题要尽量简短，这样方便引用，特别是当生成目录时。如果原拟的标题是一个长句，可以从长句中提取标题，并将长句作为标题下的内容。</p>
+<h4 id="4-1-1-2-粗体和斜体"><a href="#4-1-1-2-粗体和斜体" class="headerlink" title="4.1.1.2 粗体和斜体"></a>4.1.1.2 粗体和斜体</h4><p>在Markdown中，粗体由两个 * 或者两个 _ 包裹，斜体由一个 * 或者一个 _ 包裹</p>
+<ul>
+<li>使用* 的加粗语法</li>
+</ul>
+<p><code>**加粗内容**</code></p>
+<ul>
+<li>使用_ 的加粗语法</li>
+</ul>
+<p><code>__加粗内容__</code></p>
+<ul>
+<li>使用* 的斜体语法</li>
+</ul>
+<p><code>*加粗内容*</code></p>
+<ul>
+<li>使用_ 的斜体语法</li>
+</ul>
+<p><code>_加粗内容_</code></p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/aac25fa61a7df8a4a771bccea416bff4.png" alt="image-20210603001344569"></p>
+<h3 id="4-1-2-段落与换行"><a href="#4-1-2-段落与换行" class="headerlink" title="4.1.2 段落与换行"></a>4.1.2 段落与换行</h3><p>Markdown支持有序列表和无序列表</p>
+<p>有序列表使用数字序号 + 加英文句号 + 空格 + 列表内容来标记</p>
+<p>无序列表由*/+/- + 空格 + 列表内容来标记。</p>
+<h4 id="4-1-2-1-有序列表"><a href="#4-1-2-1-有序列表" class="headerlink" title="4.1.2.1 有序列表"></a>4.1.2.1 有序列表</h4><ul>
+<li><p>有序列表语法如下</p>
+<p>  <code>数字序号 + 英文句号 + 空格 —+ 列表内容</code></p>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<p><img src="/images/typora/5d3b3a1c9a4dd17ed7dc64523f03e6ed.png" alt="image-20210603001814484"></p>
+<h4 id="4-1-2-2-无序列表"><a href="#4-1-2-2-无序列表" class="headerlink" title="4.1.2.2 无序列表"></a>4.1.2.2 无序列表</h4><ul>
+<li>无序列表语法如下</li>
+</ul>
+<p><code>*/+/- + 空格 + 列表内容</code></p>
+<p>建议使用-来标记无序列表，因为* 容易跟粗体和斜体混淆,而+不流行</p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/2ce7c662b26e9ea6f98846a2b73515d4.png" alt="image-20210603002534732"></p>
+<h4 id="4-1-2-3-嵌套列表"><a href="#4-1-2-3-嵌套列表" class="headerlink" title="4.1.2.3 嵌套列表"></a>4.1.2.3 嵌套列表</h4><ul>
+<li>嵌套列表语法</li>
+</ul>
+<p><code>+ 第一层列表</code></p>
+<p><code>TAB + 第二层列表</code></p>
+<p><code>TAB + TAB + 第三层列表</code></p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/5823cdd42ebd2a6c9bb4e121597292f8.png" alt="image-20210603004437012"></p>
+<h4 id="4-1-2-4-分割线"><a href="#4-1-2-4-分割线" class="headerlink" title="4.1.2.4 分割线"></a>4.1.2.4 分割线</h4><p>在Markdown中，分割线由三个以上的*/-/_来标记。</p>
+<ul>
+<li>分割线语法</li>
+</ul>
+<p><code>***</code></p>
+<p><code>---</code></p>
+<p><code>___</code></p>
+<p>==注意，在行内不要有其他的字符==</p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/ea0741982832bb24baebbf240d02cb85.png" alt="image-20210603223346746"></p>
+<h3 id="4-1-3-图片-framed-picture"><a href="#4-1-3-图片-framed-picture" class="headerlink" title="4.1.3 图片:framed_picture:"></a>4.1.3 图片<span class="github-emoji"><span>🖼</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f5bc.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><ul>
+<li>插入图片的语法如下</li>
+</ul>
+<p><code>![图片代表文字](图片地址)</code></p>
+<ul>
+<li><p>语法说明</p>
+<ol>
+<li><p>图片替代问题在图片无法正常显示时比较有用，正常情况下可以为空</p>
+</li>
+<li><p>图片地址是本地图片也可以是网络图片</p>
+</li>
+<li><p>本地图片支持相对路径和绝对路径</p>
+</li>
+</ol>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<p><img src="/images/typora/42cb2cee0643a2c4ce15f6416dc4bd67.png" alt="image-20210605145346541"></p>
+<p><img src="/images/typora/7489feba2820a8975881241e007950c6.png" alt="image-20210605145109936"></p>
+<p><img src="/images/typora/864807412c04593a376f959d4f2c203c.png" alt="image-20210605145223049"></p>
+<p><img src="/images/typora/82313543ec9ff193521495dca6ff9386.png" alt="image-20210605145309429"></p>
+<h3 id="4-1-4-链接-link"><a href="#4-1-4-链接-link" class="headerlink" title="4.1.4 链接 :link:"></a>4.1.4 链接 <span class="github-emoji"><span>🔗</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><h4 id="4-1-4-1文字链接"><a href="#4-1-4-1文字链接" class="headerlink" title="4.1.4.1文字链接"></a>4.1.4.1文字链接</h4><p>文字链接就是把链接地址写在文本里。语法是用方括号包裹链接文字，后面紧跟着括号包裹的链接地址。</p>
+<p><code>[链接文字](链接地址)</code></p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/164b70748ff5a8f539729b19e4dbccda.png" alt="image-20210605150610474"></p>
+<p><img src="/images/typora/a2318a0b52e269f0b39883439a7108f2.png" alt="image-20210605150925108"></p>
+<p>相较之下，第二种写法将链接地址放在某个地方统一定义好，然后在正文中通过<strong>变量</strong>来引用，可读性更好一些，这种方法叫引用链接。</p>
+<h4 id="4-1-4-3网址链接"><a href="#4-1-4-3网址链接" class="headerlink" title="4.1.4.3网址链接"></a>4.1.4.3网址链接</h4><p>在Markdown中，将网络地址或邮箱地址使用&lt;&gt;包裹起来就会被自动转换为超链接。</p>
+<ul>
+<li>网络链接语法</li>
+</ul>
+<p><code>&lt;URL或邮箱地址&gt;</code></p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/256f36dff2011d5ce69cbd512d73e1c0.png" alt="image-20210605152121436"></p>
+<p>==注意 自动链接要以http/https 开头==</p>
+<h3 id="4-1-5-代码"><a href="#4-1-5-代码" class="headerlink" title="4.1.5 代码"></a>4.1.5 代码</h3><h4 id="4-1-5-1-行内代码"><a href="#4-1-5-1-行内代码" class="headerlink" title="4.1.5.1 行内代码"></a>4.1.5.1 行内代码</h4><p>在Markdown中，行内代码引用使用两个`包裹</p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/65a0aa07464acee4ddd6c492871b08b2.png" alt="image-20210605153117858"></p>
+<h4 id="4-1-5-2-代码块"><a href="#4-1-5-2-代码块" class="headerlink" title="4.1.5.2 代码块"></a>4.1.5.2 代码块</h4><p>在Markdown中，代码块以tab键或者四个空格开头</p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/e32f4665c60f020ab58fb2b3623a2381.png" alt="image-20210605153554490"></p>
+<p>因为代码块使用tab后者四个空格开头的效果不够直观，很多扩展语法如GFM提供了<em><strong>围栏代码块</strong></em>功能，并且支持语法高亮，详见4.2.5。</p>
+<h3 id="4-1-6-引用"><a href="#4-1-6-引用" class="headerlink" title="4.1.6 引用"></a>4.1.6 引用</h3><p>在Markdown中，引用由 &gt; + 引用内容来标记</p>
+<ul>
+<li>引用语法</li>
+</ul>
+<p><code>&gt; 引用内容</code></p>
+<ul>
+<li><p>语法说明</p>
+<ol>
+<li>多行引用也可以在没一行的开头都插入&gt; 。</li>
+<li>在引用中可以嵌套引用</li>
+<li>在引用中可以嵌套其他的Markdown语法</li>
+<li>段落与换行的格式在引用中也是适用的。</li>
+</ol>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<p><img src="/images/typora/d790cdb30c52ce4977802f8ada8ce448.png" alt="image-20210605165843595"></p>
+<h3 id="4-1-7-转义"><a href="#4-1-7-转义" class="headerlink" title="4.1.7 转义"></a>4.1.7 转义</h3><p>当我们在Markdown文件中插入一些标记，但是又不想这些符号被渲染时，可以使用\进行转义</p>
+<ul>
+<li>转义语法</li>
+</ul>
+<p><code>\特殊符号</code></p>
+<p>可被转义的字符</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">\   反斜线
+`   反引号
+<span class="token list punctuation">*</span>   星号
+_   底线
+{}  花括号
+[]  方括号
+()  括弧
+<span class="token title important"><span class="token punctuation">#</span>   井字号</span>
+<span class="token list punctuation">+</span>   加号
+<span class="token list punctuation">-</span>   减号
+.   英文句点
+!   惊叹号<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/767e9b25267609d6ef9b6c67bbef906e.png" alt="image-20210605170717467"></p>
+<h2 id="4-2-扩展语法"><a href="#4-2-扩展语法" class="headerlink" title="4.2 扩展语法"></a>4.2 扩展语法</h2><p>在众多Markdown扩展语法中，Github Flavored Markdown（简称 GFM）无疑是最流行的，它提供了包括表格，任务列表，围栏代码块，蔚蓝代码，emoji表情等在内的标记语法。</p>
+<h3 id="4-2-1-删除线"><a href="#4-2-1-删除线" class="headerlink" title="4.2.1 删除线"></a>4.2.1 删除线</h3><ul>
+<li>删除线语法</li>
+</ul>
+<p><code>~~被删除文字~~</code></p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/2358035b107e112db741214cb2d25ef3.png" alt="image-20210605171920271"></p>
+<h3 id="4-2-2-表情符号-dog"><a href="#4-2-2-表情符号-dog" class="headerlink" title="4.2.2 表情符号:dog:"></a>4.2.2 表情符号<span class="github-emoji"><span>🐶</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f436.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><p>使用：包裹表情代码即可</p>
+<ul>
+<li>表情符号与法</li>
+</ul>
+<p><code>:表情代码:</code></p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/78616ec674d1dfd5237a6d0932d5b2ed.png" alt="image-20210605172850754"></p>
+<p>更多表情符号，请查阅<a target="_blank" rel="noopener" href="https://emoji.svend.cc/">https://emoji.svend.cc/</a></p>
+<h3 id="4-2-3-表格"><a href="#4-2-3-表格" class="headerlink" title="4.2.3 表格"></a>4.2.3 表格</h3><ul>
+<li>表格语法</li>
+</ul>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token table"><span class="token table-header-row"><span class="token punctuation">|</span><span class="token table-header important"> 表头1 </span><span class="token punctuation">|</span><span class="token table-header important"> 表头2 </span><span class="token punctuation">|</span><span class="token table-header important"> 表头2 </span><span class="token punctuation">|</span>
+</span><span class="token table-line"><span class="token punctuation">|</span> <span class="token punctuation">----</span> <span class="token punctuation">|</span> <span class="token punctuation">----</span> <span class="token punctuation">|</span> <span class="token punctuation">----</span> <span class="token punctuation">|</span>
+</span><span class="token table-data-rows"><span class="token punctuation">|</span><span class="token table-data"> 内容1 </span><span class="token punctuation">|</span><span class="token table-data"> 内容2 </span><span class="token punctuation">|</span><span class="token table-data"> 内容3 </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> 内容1 </span><span class="token punctuation">|</span><span class="token table-data"> 内容2 </span><span class="token punctuation">|</span><span class="token table-data"> 内容3 </span><span class="token punctuation">|</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>语法说明</p>
+<ol>
+<li><p>单元格之间使用|来分割，为了阅读清晰，建议前和后都使用|</p>
+</li>
+<li><p>表头和其他行使用—-来分割</p>
+</li>
+<li><p>表格对齐方式</p>
+<ol>
+<li>左对齐(默认) <code>:----</code></li>
+<li>右对齐 <code>----:</code></li>
+<li>居中对齐 <code>:----:</code></li>
+</ol>
+</li>
+<li><p>块级元素（代码区域，引用区块）不能插入表格</p>
+</li>
+</ol>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<p><img src="/images/typora/75190dd933ca8c9cbc844d8296da9151.png" alt="image-20210605175509710"></p>
+<h3 id="4-2-4-任务列表"><a href="#4-2-4-任务列表" class="headerlink" title="4.2.4 任务列表"></a>4.2.4 任务列表</h3><ul>
+<li>任务列表语法</li>
+</ul>
+<pre class="line-numbers language-markd" data-language="markd"><code class="language-markd">- [ ] 未勾选
+- [x] 未勾选<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>语法说明</p>
+<ol>
+<li>任务列表以-或者+开头，然后加[ 空格 / + ]</li>
+<li>x可以小写也可以大写，推荐使用小写x</li>
+<li>方括号中的符号为空格时，复选框是未选中状态，为x时是选中状态</li>
+</ol>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<p><img src="/images/typora/17687a03ed1f0ce33f15e116d455fffb.png" alt="image-20210605181432884"></p>
+<h3 id="4-2-5-围栏代码块"><a href="#4-2-5-围栏代码块" class="headerlink" title="4.2.5 围栏代码块"></a>4.2.5 围栏代码块</h3><ul>
+<li>围栏代码语法</li>
+</ul>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">​```
+代码块
+​```
+或者
+~<span class="token strike"><span class="token punctuation">~~</span><span class="token content">
+代码块
+</span><span class="token punctuation">~~</span></span>~
+
+语法高亮
+
+​```编程语言的名称
+代码块
+​```<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>语法说明</li>
+</ul>
+<p>围栏代码使用三个`或者~包裹，支持语法高亮并可以加上编程语言的名称</p>
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/d0864330ac8ac316a9ac2c4bed959034.png" alt="image-20210605182516976"></p>
+<h3 id="4-2-6-目录"><a href="#4-2-6-目录" class="headerlink" title="4.2.6 目录"></a>4.2.6 目录</h3><ul>
+<li>生成目录的语法</li>
+</ul>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">@[toc]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>示例演示</li>
+</ul>
+<p><img src="/images/typora/9319bb71797c087639f018e0df020b19.png" alt="image-20210605184138034"></p>
+<h2 id="4-3-排版建议"><a href="#4-3-排版建议" class="headerlink" title="4.3 排版建议"></a>4.3 排版建议</h2><ul>
+<li><p>英文标点符号（如,.;:?）与后面的字符之间需要加空格，与前面的字符不需要加空格</p>
+</li>
+<li><p>当在中文，或者英文中使用&gt;标识路径是，两边加空格</p>
+<p>  例如 偏好设置 →通用 →高级设置</p>
+</li>
+<li><p>数字和百分号之间不需要添加空格</p>
+</li>
+<li><p>数字和单位符号之间不需要添加空格</p>
+</li>
+<li><p>货币符号后不加空格</p>
+</li>
+<li><p>中文排版中，使用全角标点符号</p>
+</li>
+<li><p>英文排版中，使用半角标点符号</p>
+</li>
+<li><p>正确使用英文大小写</p>
+</li>
+</ul>
+<h1 id="5-Typora编辑器使用"><a href="#5-Typora编辑器使用" class="headerlink" title="5. Typora编辑器使用"></a>5. Typora编辑器使用</h1><h2 id="5-1-软件安装"><a href="#5-1-软件安装" class="headerlink" title="5.1 软件安装"></a>5.1 软件安装</h2><p>Typora是目前最受欢迎的Markdown编辑器之一，主要特性如下</p>
+<ol>
+<li>实时预览：传统的Markdown编辑器都有两个窗口，左边是源码，右边是渲染后的结果。Typora 独辟蹊径，把源码编辑和预览效果合二为一，实现了真正的所见即所得。</li>
+<li>扩展语法：Typora不仅支持GFM，还扩展数学公式，流程图等功能</li>
+<li>快捷操作：Typora对几乎所有的Markdown标记都提供了快捷操作方式，使用起来非常高效。</li>
+<li>界面漂亮：默认支持6种主题，可自定义，好看又好用</li>
+<li>文件转换：支持多种文件格式通过导入/导出功能跟.md格式相互转换</li>
+<li>支持中文，可以帮助大家更好的理解各项功能</li>
+<li>视图模式：支持大纲和文档列表视图，方便在不同段落和不同文件之间进行切换</li>
+<li>跨平台：支持macOS，windows和Linux系统</li>
+<li>目前免费：真香</li>
+</ol>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://www.typora.io/">https://www.typora.io/</a></p>
+<h2 id="5-2-界面介绍"><a href="#5-2-界面介绍" class="headerlink" title="5.2 界面介绍"></a>5.2 界面介绍</h2><p>在默认情况下，Typora会使用操作系统的语言，如果需要自定义语言，可以在Typora编辑器上执行如下操作：偏好设置 →通用 →语言 ，选择语言后，重启Typora即可生效。</p>
+<p>Typora编辑器的界面</p>
+<p><img src="/images/typora/394f2b65567e88447d8368ef1dc7467b.png" alt="image-20210606191009446"></p>
+<p>默认鼠标放到状态栏才会显示字数统计，如果我们想让字数一直显示，则需要在<strong>偏好设置</strong>中设置，操作步骤：文件→ 偏好设置 → 外观 → 字数统计 → 勾选 <strong>总是显示字数统计</strong></p>
+<p>Typora编辑器最具特色的功能就是实时预览，当输入Markdown标记后，按回车键或者定位到别的段落就可以看到预览效果。之前介绍的Markdown语法，Typora都支持</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> 常用标记</span>
+<span class="token bold"><span class="token punctuation">**</span><span class="token content">粗体</span><span class="token punctuation">**</span></span> ，<span class="token italic"><span class="token punctuation">*</span><span class="token content">斜体</span><span class="token punctuation">*</span></span>，==高亮==，<span class="token strike"><span class="token punctuation">~~</span><span class="token content">删除线</span><span class="token punctuation">~~</span></span>，<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>u</span><span class="token punctuation">&gt;</span></span>下划线<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>u</span><span class="token punctuation">&gt;</span></span>，我是^上标^，我是<span class="token strike"><span class="token punctuation">~</span><span class="token content">下标</span><span class="token punctuation">~</span></span>，<span class="token url">[<span class="token content">超链接</span>](<span class="token url">http://www.baidu.com</span>)</span>
+<span class="token url"><span class="token operator">!</span>[<span class="token content">图片</span>](<span class="token url">https://wx1.sinaimg.cn/large/008egyxIly1gqh131whhfj30u010yagf.jpg</span>)</span>
+无序列表
+<span class="token list punctuation">-</span> 无序列表1
+<span class="token list punctuation">-</span> 无序列表2
+<span class="token list punctuation">1.</span> 有序列表
+<span class="token list punctuation">2.</span> 有序列表
+任务列表
+-[ ] 看电影
+-[ ] 听音乐<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>渲染后的效果</p>
+<p><img src="/images/typora/48214d125988931bd3ee6aca57061981.png" alt="image-20210620234753126"></p>
+<h2 id="5-3-高效使用Typora"><a href="#5-3-高效使用Typora" class="headerlink" title="5.3 高效使用Typora"></a>5.3 高效使用Typora</h2><p>Typora支持GFM，还扩展了很多其他的功能（如支持的数学公式，上标，下标，高亮，各种图表），它几乎为每个标记提供了快捷的操作方式，这使得我们的写作变得轻松。</p>
+<h3 id="5-3-1-基础语法和GFM语法"><a href="#5-3-1-基础语法和GFM语法" class="headerlink" title="5.3.1 基础语法和GFM语法"></a>5.3.1 基础语法和GFM语法</h3><h4 id="5-3-1-1-编辑样式"><a href="#5-3-1-1-编辑样式" class="headerlink" title="5.3.1.1 编辑样式"></a>5.3.1.1 编辑样式</h4><p>在Typora中通过执行：菜单栏 → <strong>格式</strong> → 加粗/斜体/代码/图像/超链接 ，可以添加或移除关于文字样式的的标记符号。如果没有选中文字，则只会添件标记符号；如果选中了文字，则会为选中的文字添加或移除标记符号</p>
+<p>格式快捷键</p>
+<p>Format</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">加粗</td>
+<td align="center">Ctrl + B</td>
+<td align="center">Command + B</td>
+</tr>
+<tr>
+<td align="center">斜体</td>
+<td align="center">Ctrl + I</td>
+<td align="center">Command + I</td>
+</tr>
+<tr>
+<td align="center">下划线</td>
+<td align="center">Ctrl + U</td>
+<td align="center">Command + U</td>
+</tr>
+<tr>
+<td align="center">行内代码</td>
+<td align="center">Ctrl + Shift + `</td>
+<td align="center">Control + `</td>
+</tr>
+<tr>
+<td align="center">删除线</td>
+<td align="center">Alt + Shift + 5</td>
+<td align="center">Control + Shift + `</td>
+</tr>
+<tr>
+<td align="center">超链接</td>
+<td align="center">Ctrl + K</td>
+<td align="center">Command + K</td>
+</tr>
+<tr>
+<td align="center">图片</td>
+<td align="center">Ctrl + Shift + I</td>
+<td align="center">Command + Control + I</td>
+</tr>
+<tr>
+<td align="center">清除格式</td>
+<td align="center">Ctrl + \</td>
+<td align="center">Command + \</td>
+</tr>
+<tr>
+<td align="center">源代码模式/预览模式切换</td>
+<td align="center">Ctrl + /</td>
+<td align="center">Command + /</td>
+</tr>
+</tbody></table>
+<h4 id="5-3-1-2-编辑段落"><a href="#5-3-1-2-编辑段落" class="headerlink" title="5.3.1.2 编辑段落"></a>5.3.1.2 编辑段落</h4><p>在Typora中通过执行：菜单栏 → <strong>段落</strong> → 段落/引用/表格/代码块/分割线/有序列表/无序列表/任务列表，可以添加或删除关于段落的标记符号</p>
+<ol>
+<li>段落的快捷键</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">标题1-6</td>
+<td align="center">Ctrl + 1/2/3/4/5/6</td>
+<td align="center">Command + 1/2/3/4/5/6</td>
+</tr>
+<tr>
+<td align="center">正文</td>
+<td align="center">Ctrl + 0</td>
+<td align="center">Command + 0</td>
+</tr>
+<tr>
+<td align="center">提升标题级别</td>
+<td align="center">Ctrl + =</td>
+<td align="center">Command + =</td>
+</tr>
+<tr>
+<td align="center">降低标题级别</td>
+<td align="center">Ctrl + -</td>
+<td align="center">Command + -</td>
+</tr>
+<tr>
+<td align="center">添加有序列表</td>
+<td align="center">Ctrl + Shift + [</td>
+<td align="center">Command + Option + O</td>
+</tr>
+<tr>
+<td align="center">添加无序列表</td>
+<td align="center">Ctrl + Shift + ]</td>
+<td align="center">Command + Option + U</td>
+</tr>
+<tr>
+<td align="center">减少缩进</td>
+<td align="center">Ctrl + [</td>
+<td align="center">Command + [</td>
+</tr>
+<tr>
+<td align="center">增加缩进</td>
+<td align="center">Ctrl + ]</td>
+<td align="center">Command + ]</td>
+</tr>
+<tr>
+<td align="center">添加任务状态</td>
+<td align="center">无</td>
+<td align="center">Option + Command + X</td>
+</tr>
+<tr>
+<td align="center">切换任务状态</td>
+<td align="center">无</td>
+<td align="center">Control + X</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong><span class="github-emoji"><span>㊙</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/3299.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<ul>
+<li><p>当光标放在任务列表上时，任务状态被激活，这时才可以切换任务状态</p>
+</li>
+<li><p><em>列表</em>和<em>代码块</em>都可以使用<strong>增加缩进</strong>和<strong>减少缩进</strong></p>
+</li>
+</ul>
+<ol start="2">
+<li>引用和水平分割线</li>
+</ol>
+<p>与引用和水平分割线对应的快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">添加引用</td>
+<td align="center">Ctrl + Shift + Q</td>
+<td align="center">Option + Command + Q</td>
+</tr>
+<tr>
+<td align="center">添加水平分割线</td>
+<td align="center">无</td>
+<td align="center">Option + Command + -</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>表格</li>
+</ol>
+<p>如果想创建一个表格，可以执行菜单栏 → <strong>段落</strong> → 表格 → 输入列数和行数 → 单击确定按钮。</p>
+<p>创建表格的快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">创建表格</td>
+<td align="center">Ctrl + Shift + T</td>
+<td align="center">Option + Command + T</td>
+</tr>
+<tr>
+<td align="center">增加一行</td>
+<td align="center">Ctrl + Enter</td>
+<td align="center">Command + Enter</td>
+</tr>
+<tr>
+<td align="center">删除一行</td>
+<td align="center">Ctrl + Backspace</td>
+<td align="center">Command + Shift + Delete</td>
+</tr>
+</tbody></table>
+<p>对于表格的增加，删除，复制和格式化操作，可以在表格中单击鼠标右键，选择<strong>表格</strong>，通过其列出的操作选项对表格进行操作。如图</p>
+<p><img src="/images/typora/434f75138e9bfaa8979a192417191b24.png" alt="image-20210606204601224"></p>
+<p>快速调整表格</p>
+<p>如果想快速调整表格的行数，列数，对齐方式，可以将光标放在表格中，表格左上方和右下方都会显示操作菜单，直接进行操作即可。==但是不太建议用这种方式调整对齐方式，否则整个文档粘贴到博客当中之后，可能还是调整前的状态，建议直接修改源代码，用:来调整==</p>
+<p><img src="/images/typora/8873ed25fecea85fb6544359d8c32e0d.png" alt="image-20210606205215428"></p>
+<p>如果想调整表格中行或列的顺序，可将光标放在行的最左边或列的最上边，当光标变成双向箭头后拖动即可调整顺序。</p>
+<p><img src="/images/typora/c9bd182e00f64b8ee45ed9c5ad4e9170.gif" alt="Jietu20210606-210513-HD"></p>
+<ol start="4">
+<li>围栏代码块</li>
+</ol>
+<p>如果想添加或删除围栏代码块的标记，可以执行菜单栏 → 段落 → 代码块。如果想把某段内容使用围栏代码块包裹，需要首先选中该内容，然后执行上述操作。</p>
+<p>围栏代码块快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">代码块</td>
+<td align="center">Ctrl + Shift + K</td>
+<td align="center">Option + Command + C</td>
+</tr>
+</tbody></table>
+<p>代码块默认是不显示行数的，如果想显示行数，则需要执行文件 → 偏好设置 → markdown →代码块 → 勾选显示行数。</p>
+<p>在代码块中，如果代码过长，默认是会自动换行的。如果不希望代码自动换行，可以执行，文件 → 偏好设置 → markdown → 代码块 → 不勾选代码块自动换行。</p>
+<h3 id="5-3-2-Typora扩展语法1"><a href="#5-3-2-Typora扩展语法1" class="headerlink" title="5.3.2 Typora扩展语法1"></a>5.3.2 Typora扩展语法1</h3><p>Typora扩展了下划线，数学公式，目录，脚注，上标和下标，图表操作等功能，并且支持很多HTML标签，使排版样式更加齐全。</p>
+<h4 id="5-3-2-1-下划线"><a href="#5-3-2-1-下划线" class="headerlink" title="5.3.2.1 下划线"></a>5.3.2.1 下划线</h4><p>在Typora中，下划线是通过HTML的&lt;u&gt;标签来实现的，语法如下</p>
+<p><code>&lt;u&gt;这段文字下面有下划线&lt;/u&gt;</code>，效果就是这样，<u>这段文字下面有下划线</u></p>
+<p>下划线快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">下划线</td>
+<td align="center">Ctrl + U</td>
+<td align="center">Command +U</td>
+</tr>
+</tbody></table>
+<h4 id="5-2-2-2-高亮"><a href="#5-2-2-2-高亮" class="headerlink" title="5.2.2.2 高亮"></a>5.2.2.2 高亮</h4><p>如果想使用高亮，需要首先激活偏好设置 → Markdown → Markdown扩展语法 → 勾选高亮→ 重启Typora。</p>
+<p>Typora的语法</p>
+<p><code>==高亮内容==</code></p>
+<ul>
+<li><p>语法说明</p>
+<ol>
+<li><p>使用两个等号（=）把想要高亮的内容包裹起来</p>
+</li>
+<li><p>设置的高亮的内容是显示为黄色</p>
+</li>
+</ol>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">==我醉欲眠卿且去==，明朝有意抱琴来<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>渲染后的效果</p>
+<p>==我醉欲眠卿且去==，明朝有意抱琴来</p>
+<p>还可以执行：菜单栏 → 格式 → 高亮，插入高亮的语法标记</p>
+<h4 id="5-2-2-3-注释"><a href="#5-2-2-3-注释" class="headerlink" title="5.2.2.3 注释"></a>5.2.2.3 注释</h4><p>如果想添加注释，可以执行：菜单栏 → 格式 → 注释，在编辑和预览时，注释的内容会被显示；在导出PDF和word时，则会被隐藏</p>
+<p>设置注释的语法</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token comment">&lt;!--我是注释--&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>设置注释的快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">注释</td>
+<td align="center">无</td>
+<td align="center">Control + -</td>
+</tr>
+</tbody></table>
+<h4 id="5-2-2-4-清除格式"><a href="#5-2-2-4-清除格式" class="headerlink" title="5.2.2.4 清除格式"></a>5.2.2.4 清除格式</h4><p>如果想快速清除样式，可以执行：菜单栏 → 格式 → 清除样式</p>
+<p>清除样式的快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">清除样式</td>
+<td align="center">Ctrl + \</td>
+<td align="center">Control + \</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-3-Typora扩展语法2"><a href="#5-3-3-Typora扩展语法2" class="headerlink" title="5.3.3 Typora扩展语法2"></a>5.3.3 Typora扩展语法2</h3><h4 id="5-3-3-1-上标和下标"><a href="#5-3-3-1-上标和下标" class="headerlink" title="5.3.3.1 上标和下标"></a>5.3.3.1 上标和下标</h4><p>如果想使用上标和下标，需要首先激活偏好设置 → Markdown → Markdown扩展语法 → 勾选下标/上标 → 重启Typora。上标和下标的语法</p>
+<p><code>~下标内容~</code></p>
+<p><code>^上标内容^</code></p>
+<ul>
+<li>语法说明</li>
+</ul>
+<ol>
+<li>使用~把下标内容包裹起来</li>
+<li>使用^把上标内容包裹起来</li>
+</ol>
+<ul>
+<li>示例演示</li>
+</ul>
+<pre class="line-numbers language-Markdown" data-language="Markdown"><code class="language-Markdown">下标：H~2~O
+
+上标：x^2^ + Y^2^<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>渲染后的效果</p>
+<p>下标：H<del>2</del>O</p>
+<p>上标：x^2^ + Y^2^</p>
+<p>还可以执行：菜单栏 → 格式 → 上标/下标，插入上标/下标的语法标记</p>
+<h4 id="5-3-3-2-内联数学公式"><a href="#5-3-3-2-内联数学公式" class="headerlink" title="5.3.3.2 内联数学公式"></a>5.3.3.2 内联数学公式</h4><p>如果想使用内联数学公式，需要首先激活偏好设置 → Markdown → Markdown扩展语法 → 勾选内联公式 → 重启Typora。内联数学公式的语法是使用$把数学公式包裹起来</p>
+<p><code>$数学公式$</code></p>
+<ul>
+<li>示例演示</li>
+</ul>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">分数：$f(x,y) = \frac{x^2}{y^3}$
+开根号：$f(x,y) = \sqrt[n]{{x^2}{y^3}}$
+省略号：$f(x<span class="token strike"><span class="token punctuation">~</span><span class="token content">1</span><span class="token punctuation">~</span></span>,x<span class="token strike"><span class="token punctuation">~</span><span class="token content">2</span><span class="token punctuation">~</span></span>，\ldots,x<span class="token strike"><span class="token punctuation">~</span><span class="token content">n</span><span class="token punctuation">~</span></span>) = x<span class="token strike"><span class="token punctuation">~</span><span class="token content">1</span><span class="token punctuation">~</span></span> + x<span class="token strike"><span class="token punctuation">~</span><span class="token content">2</span><span class="token punctuation">~</span></span> + + \cdots x<span class="token strike"><span class="token punctuation">~</span><span class="token content">n</span><span class="token punctuation">~</span></span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>渲染后的效果</p>
+
+分数：$f(x,y) = \frac{x^2}{y^3}$
+
+
+
+开根号：$f(x,y) = \sqrt[n]{{x^2}{y^3}}$
+
+
+
+省略号：$f(x~1~,x~2~，\ldots,x~n~) = x~1~ + x~2~ + + \cdots x~n~$
+
+
+<p>还可以执行：菜单栏 → 格式  →  内嵌公式 ，插入内联数学公式。</p>
+<p>设置插入内联数学公式的快捷方式</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">内联数学公式</td>
+<td align="center">无</td>
+<td align="center">Control + M</td>
+</tr>
+</tbody></table>
+<h4 id="5-2-3-3-数学公式块"><a href="#5-2-3-3-数学公式块" class="headerlink" title="5.2.3.3 数学公式块"></a>5.2.3.3 数学公式块</h4><p>专业的写作离不开数学公式。其语法是使用两个$包裹数学公式</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">$$
+数学公式
+$$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>为某段内容添加或删除公式块，需要先选中该内容，然后执行：菜单栏 → 段落 → 公式块，如果不选中任何内容，直接执行：菜单栏 → 段落 → 公式块，则会插入公式块标记。</p>
+<p>公式块快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Windows</th>
+<th align="center">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">公式块</td>
+<td align="center">Ctrl + Shift + M</td>
+<td align="center">Option + Command + M</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-4-Typora扩展语法3"><a href="#5-3-4-Typora扩展语法3" class="headerlink" title="5.3.4 Typora扩展语法3"></a>5.3.4 Typora扩展语法3</h3><p>如果想使用图表功能,需要先激活:文件→偏好设置 → Markdown →Markdown扩展语法 →勾选 图表→重启 Typora<br>注意</p>
+<ol>
+<li>图表是 Typora的扩展语法,标准的 Markdown语法、 CommonMark和GFM都不支持这一语法。</li>
+<li>如果想要把图表使用到更多的地方,推荐直接插入图片,不推荐在 Typora中进行绘制</li>
+<li>在 Typora中,图表在导出 HTML/PDF/ePub/dox等格式的文件时会被正常显示,但是其他的 Markdown编辑器不一定支持此语法。</li>
+</ol>
+<h4 id="5-2-4-1-序列图"><a href="#5-2-4-1-序列图" class="headerlink" title="5.2.4.1  序列图"></a>5.2.4.1  序列图</h4><p>序列图( Sequence Diagram)也被称为循序图,是一种UML( Unified Modeling Language,统一建模语言)行为图,它通过描述对象之间发送消息的时间顺序显示多个对象之间的动态协作。<br>Typora提供的序列图语法标记功能是基于开源项目发的</p>
+<ul>
+<li>语法</li>
+</ul>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">​```mermaid
+sequenceDiagram
+js-sequence-diagrames语法
+​```<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>语法说明</p>
+<ol>
+<li>使用3个 ` +  sequence包裹js-quence-diagrams语法。</li>
+<li>js-sequence-diagrams语法参考<a target="_blank" rel="noopener" href="http://bramp.githu.io/js-sequence-diagrams/">http://bramp.githu.io/js-sequence-diagrams/</a>。</li>
+</ol>
+</li>
+<li><p>示例演示</p>
+</li>
+</ul>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">​```mermaid
+sequenceDiagram
+interface-&gt;&gt;CanTp:CanTp_Transmit
+CanTp-&gt;&gt;CanTp:Check input
+CanTp-&gt;&gt;CanTp:Active a Tx task
+CanTp--&gt;&gt;interface:
+CanTp-&gt;&gt;interface:PduR_CanTpCopyTxData
+interface-&gt;&gt;interface:copy segment data
+interface--&gt;&gt;CanTp:
+CanTp-&gt;&gt;CanIf:CanIf_Transmit
+CanIf--&gt;&gt;CanTp:
+CanIf-&gt;&gt;CanTp:CanTp_TxConfirmation
+CanTp--&gt;&gt;CanIf:
+CanTp-&gt;&gt;interface:PduR_CanTpTxConfirmation
+interface--&gt;&gt;CanTp:
+​```<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>渲染效果</li>
+</ul>
+<p><img src="/images/typora/4ed276465678150cb2dbb79ee50ee0ff.png" alt="image-20210620233726718"></p>
+<h4 id="5-2-4-2-流程图"><a href="#5-2-4-2-流程图" class="headerlink" title="5.2.4.2 流程图"></a>5.2.4.2 流程图</h4><p>流程图是以图像的方式表示过程，算法和流程的，Typora提供的流程图语法标记是基于开源项目(flowchart.js)开发的</p>
+<p>flowchart.js语法参考<a target="_blank" rel="noopener" href="http://flowchaer.js.org/">http://flowchaer.js.org/</a>。</p>
+<h4 id="5-2-4-3-甘特图"><a href="#5-2-4-3-甘特图" class="headerlink" title="5.2.4.3 甘特图"></a>5.2.4.3 甘特图</h4><h2 id="5-4-自定义Typora主题"><a href="#5-4-自定义Typora主题" class="headerlink" title="5.4 自定义Typora主题"></a>5.4 自定义Typora主题</h2><p>如果想更换Typora主题，可以执行：菜单栏 → 主题→ 选择中意的主题</p>
+<p>Typora软件安装后，就有五种主题可选择，如果感觉不太满意，可以去<a target="_blank" rel="noopener" href="https://theme.typora.io/">官网主题</a>下载。</p>
+<p>也可以在github上下载<a target="_blank" rel="noopener" href="https://github.com/luxihua201010028/Typora-theme">Typora主题</a>,然后放在主题文件夹下即可。</p>
+<p>如果不知道安装目录，可以执行：菜单栏 → 偏好设置 → 外观→ 打开主题文件夹，就可以打开主题文件夹，重启Typora即可看到下载的主题，选择即可。</p>
+<p><img src="/images/typora/daabbf0ee158d5bbc08092be6e5fdae5.png" alt="image-20210608215821717"></p>
+<h2 id="5-5-Typora自动上传图片至阿里云图床"><a href="#5-5-Typora自动上传图片至阿里云图床" class="headerlink" title="5.5 Typora自动上传图片至阿里云图床"></a>5.5 Typora自动上传图片至阿里云图床</h2><p>Typora + ipic + 阿里云OSS</p>
+<h3 id="5-5-1-阿里云图床环境搭建"><a href="#5-5-1-阿里云图床环境搭建" class="headerlink" title="5.5.1 阿里云图床环境搭建"></a>5.5.1 阿里云图床环境搭建</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://account.aliyun.com/register/register.htm?spm=5176.12901015.yrepazatz.1.3ec5525covwkoT&amp;oauth_callback=https://www.aliyun.com?spm=5176.12901015.0.i12901015.3ec5525covwkoT">注册阿里云账号</a>，手机号注册即可</li>
+</ol>
+<p><img src="/images/typora/153c2561022e48c02c272a76327a85ab.png" alt="image-20210608220913086"></p>
+<ol start="2">
+<li>阿里云控制台 → 产品与服务 → 对象存储OSS → Bucket列表 → 创建Bucket</li>
+</ol>
+<p><img src="/images/typora/8ed58ed0420a54f887554182918fff89.png" alt="image-20210608221058065"></p>
+<p><img src="/images/typora/eeceb6a2ea941d061136b5272903c68a.png" alt="image-20210608221238617"></p>
+<p><img src="/images/typora/62cbd31e5451f45a59a742a6f67923f9.png" alt="image-20210608221615157"></p>
+<ol start="3">
+<li>设置Bucket</li>
+</ol>
+<p>注意：==Bucket名称只允许小写字母、数字、短横线（-），且不能以短横线开头或结尾==</p>
+<p>参考配置如下</p>
+<p><img src="/images/typora/aef28aba56939af984814999e7a4143a.png" alt="image-20210608222628067"></p>
+<p><img src="/images/typora/45bfb1cb087a51db966e4757245b95ad.png" alt="image-20210608222702498"></p>
+<p>几点注意事项</p>
+<ul>
+<li><p>Bucket名称 （配置iPic需要用到）</p>
+</li>
+<li><p>Endpoint的地址（配置IPic需要用到）</p>
+</li>
+<li><p>选择公共读</p>
+</li>
+<li><p>存储类型和空间，按需购买设置</p>
+</li>
+</ul>
+<ol start="4">
+<li>创建子用户 AccessKey</li>
+</ol>
+<p>控制台 → AccessKey管理 →  开始使用子用户AccessKey</p>
+<p><img src="/images/typora/ff281bbe2b5d1a13dc1e716547475df5.png" alt="image-20210608223424628"></p>
+<p><img src="/images/typora/5ca60c7023d1f76f4dd8c1487decaf92.png" alt="image-20210608223531105"></p>
+<p><img src="/images/typora/66222d3ad71eb201afe94dec7c019513.png" alt="image-20210608223714196"></p>
+<p><img src="/images/typora/59e903925fffbcd7e796836c1992b271.png" alt="image-20210608224031312"></p>
+<p>注意：==创建成功后，弹出下图信息，这里的AccessKey Secret只显示一次，自己备份下来==</p>
+<p><img src="/images/typora/6fda52202188674125147a2e2d4a1a89.png" alt="image-20210608224320023"></p>
+<p>如果一不小心手抖了，将网页切走了，可以到 控制台 → AccessKey管理 → 继续使用AccessKey  → 继续使用子用户 → 输入手机号 → 复制AccessKeyId和AccessKey</p>
+<p><img src="/images/typora/f7d6c20b645a17d2890c66cb4b4303f1.png" alt="image-20210608225751486"></p>
+<ol start="5">
+<li>给刚创建的用户添加管理OSS权限</li>
+</ol>
+<p><img src="/images/typora/1c224b3268ed7d5d1cae730e04a154c0.png" alt="image-20210608224612077"></p>
+<p><img src="/images/typora/c1f65468adb03d53a02cd2bca72ecf52.png" alt="image-20210608224737786"></p>
+<p>如此，阿里云OSS准备工作完成。</p>
+<h3 id="5-5-2-iPic添加阿里云Oss"><a href="#5-5-2-iPic添加阿里云Oss" class="headerlink" title="5.5.2 iPic添加阿里云Oss"></a>5.5.2 iPic添加阿里云Oss</h3><p>前往商店下载IPic即可，这里主要说下如何设置阿里云OSS</p>
+<p>iPic → 偏好设置 → 图床 → + → 选择阿里云OSS</p>
+<p><img src="/images/typora/3681e062c093958e8c09f07e08ebddb7.png" alt="image-20210608230359850"></p>
+<ul>
+<li>Bucket 就是我们设置Bucket名称</li>
+<li>AccessKey 就是上面得到的AccessID</li>
+<li>Secret Key 就是上面得到的AccessKey Secret</li>
+<li>网址前缀设置如下，点击==验证==即可检验信息是否填写正确</li>
+</ul>
+<p><img src="/images/typora/e85b9d7caa9b777f95f72357076f88b0.png" alt="image-20210608231346370"></p>
+<h3 id="5-5-3-Typora设置图片上传位置"><a href="#5-5-3-Typora设置图片上传位置" class="headerlink" title="5.5.3 Typora设置图片上传位置"></a>5.5.3 Typora设置图片上传位置</h3><p>偏好设置 → 图像 → 插入图片时上传图片</p>
+<p><img src="/images/typora/53af09a5d6787972f8c14104ec201375.png" alt="image-20210608231745977"></p>
+<p>注意<span class="github-emoji"><span>👉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<ul>
+<li>勾选 对于网络位置/本地位置的图片应用上述规则，即上传</li>
+<li>头癣允许根据YAML设置自动上传图片</li>
+<li>选择使用iPic上传</li>
+</ul>
+<p>如此，Typora就会将图片自动上传至阿里云</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">一只不停游泳的鱼儿</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://luxihua.space/blog/420f09d5.html">http://luxihua.space/blog/420f09d5.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Typora/">
+                                    <span class="chip bg-color">Typora</span>
+                                </a>
+                            
+                                <a href="/tags/Markdown/">
+                                    <span class="chip bg-color">Markdown</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 't7fHma85zB34TKeJjc64jsGe-gzGzoHsz',
+        appKey: '5q4uaKjj8GE1wA3NxhVdl4f3',
+        serverURLs: 'https://t7fhma85.lc-cn-n1-shared.com',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'wavatar',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '如果你没有GitHub账号,还可以在这里评论啦!'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/blog/cb5ce835.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/229.jpeg" class="responsive-img" alt="macOS开发环境搭建">
+                        
+                        <span class="card-title">macOS开发环境搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要记录Ubuntu开发环境搭建
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/macOS/" class="post-category">
+                                    macOS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/macOS/">
+                        <span class="chip bg-color">macOS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/420f09d5.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/174.jpeg" class="responsive-img" alt="Markdown语法和Typora编辑器使用">
+                        
+                        <span class="card-title">Markdown语法和Typora编辑器使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要记录markdown语法和typora编辑器的使用
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category">
+                                    Markdown
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Typora/">
+                        <span class="chip bg-color">Typora</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('6'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+                <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                            <span id="year">2023-2024</span>
+                            
+                                    <a href="/about" target="_blank">一只不停游泳的鱼儿</a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery"
+                                        target="_blank">Matery</a>
+                                    
+                                            <br>
+                                            
+                                                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">
+                                                        193.6k
+                                                    </span>
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_pv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                                                                                    <span id="busuanzi_value_site_pv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                
+                                                                                    <span
+                                                                                        id="busuanzi_container_site_uv">
+                                                                                        &nbsp;|&nbsp;<i
+                                                                                            class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                                                                                            <span
+                                                                                                id="busuanzi_value_site_uv"
+                                                                                                class="white-color"></span>
+                                                                                    </span>
+                                                                                    
+                                                                                        <br>
+
+                                                                                        <!-- 运行天数提醒. -->
+                                                                                        
+                                                                                            <span id="sitetime"> Loading
+                                                                                                ...</span>
+                                                                                            <script>
+                                                                                                var calcSiteTime = function () {
+                                                                                                    var seconds = 1000;
+                                                                                                    var minutes = seconds * 60;
+                                                                                                    var hours = minutes * 60;
+                                                                                                    var days = hours * 24;
+                                                                                                    var years = days * 365;
+                                                                                                    var today = new Date();
+                                                                                                    var startYear = "2023";
+                                                                                                    var startMonth = "2";
+                                                                                                    var startDate = "21";
+                                                                                                    var startHour = "0";
+                                                                                                    var startMinute = "0";
+                                                                                                    var startSecond = "0";
+                                                                                                    var todayYear = today.getFullYear();
+                                                                                                    var todayMonth = today.getMonth() + 1;
+                                                                                                    var todayDate = today.getDate();
+                                                                                                    var todayHour = today.getHours();
+                                                                                                    var todayMinute = today.getMinutes();
+                                                                                                    var todaySecond = today.getSeconds();
+                                                                                                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                                    var diff = t2 - t1;
+                                                                                                    var diffYears = Math.floor(diff / years);
+                                                                                                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                                    // 区分是否有年份.
+                                                                                                    var language = 'zh-CN';
+                                                                                                    if (startYear === String(todayYear)) {
+                                                                                                        document.getElementById("year").innerHTML = todayYear;
+                                                                                                        var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                                    } else {
+                                                                                                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                        var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                            + diffDays + ' days';
+                                                                                                        if (language === 'zh-CN') {
+                                                                                                            yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        } else if (language === 'zh-HK') {
+                                                                                                            yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                        }
+                                                                                                        document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                                    }
+                                                                                                }
+
+                                                                                                calcSiteTime();
+                                                                                            </script>
+                                                                                            
+                                                                                                <br>
+                                                                                                
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lxh2010100" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1131729094@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://www.facebook.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+
+
+    <a href="https://twitter.com/" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com/" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+                    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+                        <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+                            <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+                                <script
+                                    src="/libs/materialize/materialize.min.js"></script>
+                                <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+                                <script src="/libs/aos/aos.js"></script>
+                                <script
+                                    src="/libs/scrollprogress/scrollProgress.min.js"></script>
+                                <script
+                                    src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+                                <script src="/js/matery.js"></script>
+
+                                
+
+                                        
+
+                                                
+
+                                                        <!-- 雪花特效 -->
+                                                        
+                                                            <script type="text/javascript">
+                                                                // 只在桌面版网页启用特效
+                                                                var windowWidth = $(window).width();
+                                                                if (windowWidth > 768) {
+                                                                    document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+                                                                }
+                                                            </script>
+                                                            
+
+                                                                <!-- 鼠标星星特效 -->
+                                                                
+
+                                                                        
+                                                                            <script
+                                                                                src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+                                                                            <script
+                                                                                src="/libs/others/TencentCaptcha.js"></script>
+                                                                            <button id="TencentCaptcha"
+                                                                                data-appid="xxxxxxxxxx"
+                                                                                data-cbfn="callback" type="button"
+                                                                                hidden></button>
+                                                                            
+
+                                                                                <!-- Baidu Analytics -->
+
+                                                                                    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+                                                                                        
+                                                                                                
+                                                                                                    <script async
+                                                                                                        src="/libs/others/busuanzi.pure.mini.js"></script>
+                                                                                                    
+
+                                                                                                        
+
+                                                                                                                
+
+                                                                                                                        <!--腾讯兔小巢-->
+                                                                                                                        
+                                                                                                                                
+                                                                                                                                    <script
+                                                                                                                                        type="text/javascript"
+                                                                                                                                        color="0,0,255"
+                                                                                                                                        pointColor="0,0,255"
+                                                                                                                                        opacity='0.7'
+                                                                                                                                        zIndex="-1"
+                                                                                                                                        count="99"
+                                                                                                                                        src="/libs/background/canvas-nest.js"></script>
+                                                                                                                                    
+
+                                                                                                                                        
+
+                                                                                                                                                    
+                                                                                                                                                        <script
+                                                                                                                                                            type="text/javascript"
+                                                                                                                                                            src="/libs/background/ribbon-dynamic.js"
+                                                                                                                                                            async="async"></script>
+                                                                                                                                                        
+
+                                                                                                                                                            
+                                                                                                                                                                <script
+                                                                                                                                                                    src="/libs/instantpage/instantpage.js"
+                                                                                                                                                                    type="module"></script>
+                                                                                                                                                                
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+
+</html>
